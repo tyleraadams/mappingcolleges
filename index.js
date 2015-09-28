@@ -1,8 +1,30 @@
-function parseLatLon(input) {
+function parseLatLon (input) {
   var parts = input.split(/,/);
   var lat = parseFloat(parts[0]);
   var lng = parseFloat(parts[1]);
   return [lat,lng];
+}
+
+function slugify (string) {
+  return string.toLowerCase().replace(/\s/g, '-');
+}
+
+function scrollTo ($destinationSelector) {
+  $('html, body').animate({
+    scrollTop: $destinationSelector.offset().top
+  }, 1000);
+}
+
+function scrollToNextSection (e) {
+  var $parent = $(e.target).closest('section, header');
+  scrollTo($parent.next());
+}
+
+function addButtonListeners ($container) {
+  $('#close').click(function (event) {
+    $(this).off();
+    $container.html('');
+  });
 }
 
 function createChoroplethData (field) {
@@ -36,106 +58,136 @@ $(function(){
 
   statesValues = createChoroplethData('Percent Part-Time');
 
-  $('h1').text('Percent Part-Time');
+  $('.map h3').text('Percent Part-Time');
 
   $('#slider form').click(function(e) {
+
     if (e.target && e.target.value) {
       statesValues = createChoroplethData(e.target.value);
       THEMAP.series.regions[0].clear();
       THEMAP.series.regions[0].setValues(createChoroplethData(e.target.value));
-      $('h1').text(e.target.value);
+      $('.map h3').text(e.target.value);
     }
   });
 
-  window.starred = dataArr.filter(function(item, index) { item.origIndex = index; return item.starred }).map(function (item,index) {
-        var latLng =  parseLatLon(item['latitude,longitude']);
-        var obj = { latLng: latLng, name: item['Instiuttion Name'],  'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'], 'First-Year Retention Rate': item['First-Year Retention Rate'], 'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'], 'Percent Minority': item['Percent Minority'], 'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],'Percent Part-Time': item['Percent Part-Time'], 'Three-Year Graduation Rate': item['Three-Year Graduation Rate'], starred: item.starred,  style: {fill: 'yellow'} };
-        return obj;
+  $('.icon-angle-double-down').click(scrollToNextSection);
+
+
+  window.starred = dataArr.filter(function (item, index) {
+    item.origIndex = index;
+    return item.starred
+  }).map(function (item,index) {
+      var latLng =  parseLatLon(item['latitude,longitude']);
+      var obj = {
+        latLng: latLng,
+        name: item['Instiuttion Name'],
+        'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'],
+        'First-Year Retention Rate': item['First-Year Retention Rate'],
+        'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'],
+        'Percent Minority': item['Percent Minority'],
+        'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],
+        'Percent Part-Time': item['Percent Part-Time'],
+        'Three-Year Graduation Rate': item['Three-Year Graduation Rate'],
+        starred: item.starred,
+        link: slugify(item['Instiuttion Name']),
+        style: {
+          fill: 'yellow'
+        }
+      };
+      return obj;
   });
+
   THEMAP = new jvm.Map({
     container: $('#world-map-gdp'),
     map: 'us_merc',
-    markersSelectable: true,
     markers: window.starred,
+    zoomOnScroll: false,
+    backgroundColor: '#FFFFFF',
     series: {
       regions: [{
         attribute: 'fill',
-        scale: [ '#FFB581', '#FF8747', '#c06000'],
-        values: statesValues, // data.metro.unemployment[val],
+        scale: ['#FFB581', '#FF8747', '#c06000'],
+        values: statesValues,
         min: jvm.min(statesValues),
         max: jvm.max(statesValues)
       }],
     },
+
     onRegionTipShow: function (event, label, code){
       label.html(
         '<b>'+label.html()+'</b></br>'+
-        '<b>'+ $('h1').text() + '</b> ' + statesValues[code]
+        '<b>'+ $('.map h3').text() + '</b> ' + statesValues[code]
       );
     },
+
     onRegionClick: function (e, code) {
-      // console.log(e, code);
-      // console.log(this);{region: 'AU', animate: true})
-      //console.log(this);
-      THEMAP.setFocus({region: code, animate: true});
+      THEMAP.setFocus({ region: code, animate: true });
       THEMAP.params.placeCollegesOnStateMap(code);
-      //THEMAP.placeCollegesOnStateMap(code);
     },
+
+    onMarkerClick: function (e, code) {
+      // console.log(window.starred[code]);
+      var templateMarkup = $('template[name="coleman"]').html()
+      var $timelineContainer = $('section.timeline');
+      $timelineContainer.html('<h2>Timeline</h2> <h3>'+ window.starred[code]['name']+'</h3>');
+
+      $timelineContainer.append(templateMarkup);
+      addButtonListeners($timelineContainer);
+      setTimeout(function () {
+        scrollTo($timelineContainer)
+      },1500);
+    },
+
     onMarkerTipShow: function (event, label, index) {
-      //console.log(/\d*/.test(index));
       var sourceArr;
       var name;
-      console.log(index)
+
+      // index is a 0 - 4 for the starred colleges, and otherwise the name of the college
       if (/\d+/.test(index)) {
         sourceArr  = window.starred;
         name = sourceArr[index]['name'];
-      } else{
+        var found = sourceArr.find(function (item) {
+          // console.log(item.name, name);
+          return item.name === name;
+        });
+      } else {
         sourceArr = window.currentStateData;
         name = index;
-        var found = sourceArr.find(function(item) {  console.log(item.name, name); return item.name === name} );
-        console.log(found);
+        var found = sourceArr.find(function (item) {
+          // console.log(item.name, name);
+          return item.name === name;
+        });
+        // console.log(found);
       }
 
-      label.html('<b>'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):'+ found['Percent Non-Traditional Age (25 and Older)']+'</b><br/><b> First-Year Retention Rate:'+ found['First-Year Retention Rate']+'</b><br/><b>Size: Annual Unduplicated Headcount: '+ found['Size: Annual Unduplicated Headcount']+'</b><br/><b> Percent Minority: ' + found['Percent Minority'] + '</b><br/> <b> Percent of Undergrads Receiving Pell, 2011-12: ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '</b><br/><b> Percent Part-Time: ' +  found['Percent Part-Time'] + '</b><br/><b> Three-Year Graduation Rate: ' + found['Three-Year Graduation Rate'] + '</b><br/>');
+      label.html('<b>'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):'+ found['Percent Non-Traditional Age (25 and Older)']+'</b><br/><b> First-Year Retention Rate:'+ found['First-Year Retention Rate']+'</b><br/><b>Size: Annual Unduplicated Headcount: '+ found['Size: Annual Unduplicated Headcount']+'</b><br/><b> Percent Minority: ' + found['Percent Minority'] + '</b><br/> <b> Percent of Undergrads Receiving Pell, 2011-12: ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '</b><br/><b> Percent Part-Time: ' +  found['Percent Part-Time'] + '</b><br/><b> Three-Year Graduation Rate: ' + found['Three-Year Graduation Rate'] + '</b>');
     },
+
     placeCollegesOnStateMap: function (code) {
       code = code.replace('US-', '');
       var locationData = dataArr.filter(function(item){
-        return item.State === code;
+        // !item.starred -- don't cover up the starred item with a regular dot
+        return item.State === code && !item.starred;
       }).map(function (item,index) {
-        // console.log(item);
         var latLng =  parseLatLon(item['latitude,longitude']);
         return { latLng: latLng, name: item['Instiuttion Name'],  'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'], 'First-Year Retention Rate': item['First-Year Retention Rate'], 'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'], 'Percent Minority': item['Percent Minority'], 'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],'Percent Part-Time': item['Percent Part-Time'], 'Three-Year Graduation Rate': item['Three-Year Graduation Rate'] };
       });
-      //console.log(THEMAP);
-      // console.log('!!! ', THEMAP.markers);
-      if (window.currentStateData){
-        // window.currentStateData.forEach(function(item){
-        //   THEMAP.removeMarkers(item.name);
-        // })
-        console.log(THEMAP.markers);
-        THEMAP.removeMarkers(
-          window.currentStateData
-          .map( function (item) {
-            // console.log(item.name);
-            return item.name;
-          })
-        );
-        // var oldMarkers = window.currentStateData.map(function(item, index){
-        //   return index + 4;
-        // });
-        // console.log('oldMarkers: ' + oldMarkers, 'mapmarkers: ' , THEMAP.markers);
 
-        // THEMAP.removeMarkers(oldMarkers);
+      if (THEMAP.markers) {
+        var markersToRemove = [];
+        for (var markerName in THEMAP.markers) {
+          if (!/\d/.test(markerName)) {
+            markersToRemove.push(markerName);
+          }
+        }
+        THEMAP.removeMarkers(markersToRemove);
       }
+
       window.currentStateData = locationData;
-      console.log(window.currentStateData);
-      window.currentStateData.forEach(function(item){
-        console.log(item);
+
+      window.currentStateData.forEach(function (item) {
         THEMAP.addMarker(item.name, item);
-      })
-      //console.log(THEMAP.addMarkers(window.currentStateData));
-      //THEMAP.setSelectedMarkers();
-      // THEMAP.addMarkers(window.starred);
+      });
     }
   });
 });

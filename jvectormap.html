@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/fontello.css">
 <link rel="stylesheet" href="jquery-jvectormap-2.0.4.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script src="jquery-2.1.4.js"></script>
@@ -9,25 +10,81 @@
 <script src="index.js"></script>
 
 <style>
+
 body {
   font-family: 'Open Sans', sans-serif;
-}
-#map, #world-map-gdp {
-  height: 100vh;
-
+  margin: 0;
+  padding: 0;
 }
 
-.jvectormap-container {
+p {
+  margin: 0;
+}
+
+button {
+  border: none;
+  background: rgba(0, 0, 0, 0.666);
+  color: white;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  line-height: 18px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+button:hover  {
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+small {
+  font-size: 0.5em;
+}
+
+#world-map-gdp {
+  width: 100%;
+  height: 90vh;
+}
+
+#takeaway_logo {
+  width: 90px;
+}
+
+/*.jvectormap-container {
   background-color:snow !important;
-}
+}*/
 
-#slider, h1 {
+#slider, .map h2, .map h3, h1 {
   position: absolute;
   z-index:1;
 }
 
-h1 {
+h2, .map h3 {
   bottom: 0;
+}
+
+.map {
+  padding: 24px;
+  background: white;
+  /*height: 100vh;*/
+  height: 90vh;
+}
+
+.map h3 {
+  bottom: 25px;
+}
+
+h1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
 }
 
 #slider {
@@ -35,21 +92,208 @@ h1 {
   right: 24px;
   bottom:48px;
 }
+
+img {
+  width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+section, header {
+  position: relative;
+}
+
+header {
+  height: 100vh;
+}
+
+header::before {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  content: '';
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.icon-angle-double-down {
+  position: absolute;
+  bottom: 12px;
+  color: white;
+  font-size: 24px;
+  left: 50%;
+  width: 48px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.5);
+  height: 48px;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+footer {
+  display: table;
+  width: 100%;
+  border: 1px solid #cccccc;
+}
+
+footer > * {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 33%;
+}
+
+.red {
+  border-bottom: 2px solid #f00023;
+}
+
+.bold {
+  font-size: 38px;
+}
+
+.own-line {
+  display: block;
+  margin-top: 12px;
+}
+
+.icon-twitter, .icon-facebook {
+  display: inline;
+  color: #45619d;
+  font-size: 1.3em;
+}
+
+.icon-twitter {
+  color: #55acee;
+  margin-right: 24px;
+}
+
+.social-media-buttons-container {
+  text-align: right;
+}
+
+.author {
+  text-align: left;
+  padding-left: 24px;
+}
+
+.about {
+  height: 100vh;
+  background: #f00023;
+  color: white;
+}
+
+article {
+  width: 500px;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+article p {
+  margin-bottom: 24px;
+}
+
+.timeline {
+  padding: 24px;
+}
+.timeline button {
+  float: right;
+  margin-right: 12px;
+}
+
+
 </style>
 </head>
+
 <body>
-  <h1>testing</h1>
-  <div id='slider'>
-    <form>
-      <input type='radio' name='visualization' value='Percent Part-Time' checked/>Percent Part-Time<br>
-      <input type='radio' name='visualization' value='Percent Non-Traditional Age (25 and Older)'/>Percent Non-Traditional Age (25 and Older)<br>
-      <input type='radio' name='visualization' value='Percent Minority'/>Percent Minority<br>
-      <input type='radio' name='visualization' value='First-Year Retention Rate'/>First-Year Retention Rate<br>
-      <input type='radio' name='visualization' value='Three-Year Graduation Rate'/>Three-Year Graduation Rate<br>
-      <input type='radio' name='visualization' value='Percent of Undergrads Receiving Pell, 2011-12'/>Percent of Undergrads Receiving Pell, 2011-12
-    </form>
+  <header class="jumbotron">
+    <h1>Community Colleges <small class="own-line"> A Series from WNYC's <span class="red bold">The Takeaway</span></small></h1>
+    <figure>
+      <img src="community-college.jpg" alt="Community College"/>
+    </figure>
+    <button class="icon-angle-double-down"></button>
+  </header>
+  <section class="about">
+    <article>
+    <h2>About The Project</h2>
+    <p>
+      Over the past 30 years, researchers have found a widening survival divide between black and white women diagnosed with breast cancer in the United States.
+    </p>
+    <p>
+      Through audio diaries, three African-American women share their thoughts and fears, their struggles and triumphs, as they cope with the disease.
+    </p>
+    <p>
+      Over the past 30 years, researchers have found a widening survival divide between black and white women diagnosed with breast cancer in the United States.
+    </p>
+    <p>
+      Through audio diaries, three African-American women share their thoughts and fears, their struggles and triumphs, as they cope with the disease.
+    </p>
+    </article>
+    <button class="icon-angle-double-down"> </button>
+  </section>
+  <section class="map">
+    <h2>Map</h2>
+    <h3></h3>
+    <div id='slider'>
+      <form>
+        <input type='radio' name='visualization' value='Percent Part-Time' checked/>Percent Part-Time<br>
+        <input type='radio' name='visualization' value='Percent Non-Traditional Age (25 and Older)'/>Percent Non-Traditional Age (25 and Older)<br>
+        <input type='radio' name='visualization' value='Percent Minority'/>Percent Minority<br>
+        <input type='radio' name='visualization' value='First-Year Retention Rate'/>First-Year Retention Rate<br>
+        <input type='radio' name='visualization' value='Three-Year Graduation Rate'/>Three-Year Graduation Rate<br>
+        <input type='radio' name='visualization' value='Percent of Undergrads Receiving Pell, 2011-12'/>Percent of Undergrads Receiving Pell, 2011-12
+      </form>
+    </div>
+    <div id='world-map-gdp'></div>
+  </section>
+
+  <section class="timeline">
+  </section>
+
+  <template name="miller">
+  <!--CRYSTAL-->
+  <div id="audioButton" class="icon-volume-up"></div>
+  <iframe id="miller" frameborder="0" height="650" src="http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0ArmAJfFcZtYadFA4NGhUbHk1dUF6eml0MVQ4bUVXb2c&amp;font=Bevan-PotanoSans&amp;maptype=toner&amp;lang=en&amp;height=650" width="100%"><script>
+    $(document).ready(function(){
+      $('.vco-storyjs').css('background', 'beige')
+  })</script></iframe>
+   <audio autoplay id="player" src="miller.WAV"></audio>
+</template>
+
+<template name="coleman">
+  <!--ANITA-->
+  <button id="audioButton" class="icon-volume-up"></button>
+  <button id="close">x</button>
+  <iframe id="coleman" frameborder="0" height="650" src="http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0ArmAJfFcZtYadEdMcHNONThKMkhrelpWaWFhYXJBTFE&amp;font=Bevan-PotanoSans&amp;maptype=toner&amp;lang=en&amp;height=650" width="100%"></iframe>
+  <!-- <audio autoplay id="player" src="coleman.WAV"></audio> -->
+
+</template>
+
+<template name="echols">
+  <!--LISA-->
+  <button id="audioButton"></button>
+  <button id="close">x</button>
+  <iframe id="echols" frameborder="0" height="650" src="http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0ArmAJfFcZtYadE5NNUtsWk1FSkVaRVVpbmVsd3BxdlE&amp;font=Bevan-PotanoSans&amp;maptype=toner&amp;lang=en&amp;height=650" width="100%"></iframe>
+  <audio autoplay id="player" src="echols.WAV"></audio>
+</template>
+
+
+<footer id="footer">
+  <p class="author"><small>Built by</small> <br><a href="http://tyleraadams.com" class="credit red" target="_blank">Tyler Adams</a></p>
+  <p class="logo-container"><a href="http://www.thetakeaway.org/series/breastcancer/" target="_blank"><img id="takeaway_logo" src="takeawaylogo.png"></a></p>
+  <div class="social-media-buttons-container">
+    <a href="https://www.facebook.com/groups/underherskin/1450514928556979/" target="_blank" class="icons"><div id="facebook" class="icon-facebook"></div></a>
+    <a href="http://twitter.com/thetakeaway" class="icons" target="_blank"><div id="twitter" class="icon-twitter"></div></a>
   </div>
-  <div id='world-map-gdp'></div>
+
+</footer>
 </body>
 
 </html>
