@@ -1,0 +1,225 @@
+body {
+  /*font-family: 'Open Sans', sans-serif;*/
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Lato', sans-serif;
+
+  font-family: 'Lora', serif;
+
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+p {
+  font-family: 'Lora', serif;
+  margin: 0;
+}
+
+button {
+  border: none;
+  background: rgba(0, 0, 0, 0.666);
+  color: white;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  line-height: 18px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+button:hover  {
+  opacity: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+small {
+  font-size: 0.5em;
+}
+
+#world-map-gdp {
+  width: 100%;
+  height: 90vh;
+}
+
+#takeaway_logo {
+  width: 150px;
+}
+
+#slider, .map h2, .map h3, h1 {
+  position: absolute;
+  z-index:1;
+}
+
+h2, .map h3 {
+  bottom: 0;
+}
+
+.map {
+  padding: 24px;
+  background: white;
+  height: 90vh;
+}
+
+.map h3 {
+  bottom: 25px;
+}
+
+h1 {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  font-size: 3em;
+}
+
+#slider {
+  width: 20%;
+  right: 24px;
+  bottom:48px;
+}
+
+img {
+  width: auto;
+  height: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+section, header {
+  position: relative;
+}
+
+header {
+  height: 100vh;
+}
+
+header::before {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  content: '';
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.icon-angle-double-down {
+  position: absolute;
+  bottom: 12px;
+  color: white;
+  font-size: 24px;
+  left: 50%;
+  width: 48px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.5);
+  height: 48px;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+footer {
+  display: table;
+  width: 100%;
+  border: 1px solid #cccccc;
+}
+
+footer > * {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 33%;
+}
+
+.red {
+  border-bottom: 2px solid #f00023;
+}
+
+.bold {
+  font-size: 38px;
+}
+
+.own-line {
+  display: block;
+  margin-top: 12px;
+}
+
+.icon-twitter, .icon-facebook {
+  display: inline;
+  color: #45619d;
+  font-size: 1.3em;
+}
+
+.icon-twitter {
+  color: #55acee;
+  margin-right: 24px;
+}
+
+.social-media-buttons-container {
+  text-align: right;
+}
+
+.author {
+  text-align: left;
+  padding-left: 24px;
+}
+
+.about {
+  height: 100vh;
+  background: #f00023;
+  color: white;
+}
+
+article {
+  width: 500px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+article p {
+  margin-bottom: 24px;
+}
+
+.timeline {
+  padding: 24px;
+}
+
+.timeline button {
+  float: right;
+  margin-right: 12px;
+}
+
+
+/*section specific */
+.jumbotron {
+
+}
+.about {
+
+}
+
+.map {
+
+}
+
+.timeline {
+
+}

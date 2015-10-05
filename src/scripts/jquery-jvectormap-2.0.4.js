@@ -3015,7 +3015,6 @@ jvm.Map.prototype = {
     var i;
 
     for (i = 0; i < markers.length; i++) {
-       console.log(markers[i])
       this.markers[ markers[i] ].element.remove();
       delete this.markers[ markers[i] ];
     };

@@ -1,0 +1,25 @@
+{
+  "name": "community_college_challenge",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tyleraadams/mappingcolleges.git"
+  },
+  "author": "Tyler Adams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyleraadams/mappingcolleges/issues"
+  },
+  "homepage": "https://github.com/tyleraadams/mappingcolleges",
+  "devDependencies": {
+    "del": "^2.0.2",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.1",
+    "compression": "^1.6.0"
+  }
+}
