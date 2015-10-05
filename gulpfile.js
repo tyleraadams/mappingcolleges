@@ -40,5 +40,5 @@ gulp.task('lint', function() {
     .pipe(eslint.format());
 });
 
-gulp.task('default', ['lint', 'scripts', 'styles', 'clean']);
+gulp.task('default', ['scripts', 'styles', 'clean']);
 

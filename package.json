@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/tyleraadams/mappingcolleges/issues"
   },
+  "scripts": {
+    "start": "gulp"
+  },
   "homepage": "https://github.com/tyleraadams/mappingcolleges",
   "devDependencies": {
     "del": "^2.0.2",

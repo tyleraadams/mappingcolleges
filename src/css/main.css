@@ -1,12 +1,11 @@
 body {
-  /*font-family: 'Open Sans', sans-serif;*/
   margin: 0;
   padding: 0;
-
-  font-family: 'Lato', sans-serif;
-
   font-family: 'Lora', serif;
+}
 
+figure {
+  margin: 0 !important;
 }
 
 h1, h2, h3, h4 {
@@ -19,7 +18,7 @@ h3 {
 }
 
 p {
-  font-family: 'Lora', serif;
+  /*font-family: 'Lora', serif;*/
   margin: 0;
 }
 
@@ -134,9 +133,10 @@ header::before {
 }
 
 footer {
-  display: table;
+  display: table !important;
   width: 100%;
   border: 1px solid #cccccc;
+  padding-top: 12px;
 }
 
 footer > * {
