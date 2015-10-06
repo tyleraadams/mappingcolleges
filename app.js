@@ -3,13 +3,14 @@ var app = express();
 var path = require('path');
 var compression = require('compression');
 var fs = require('fs');
+var favicon = require('serve-favicon');
 // var parse = require('csv-parse');
 var obj;
 var yearInMs = 31536000000;
 
 app.use(compression());
 app.use(express.static('public', { maxAge: yearInMs }));
-
+app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // var csvStream = fs.createReadStream('community_college_data.csv');
 // var writeStream = fs.createWriteStream('communit_college_data.json');
 
@@ -32,4 +33,4 @@ app.get('/data.json', function (req, res) {
   });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
