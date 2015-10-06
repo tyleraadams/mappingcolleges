@@ -3,7 +3,7 @@ var app = express();
 var path = require('path');
 var compression = require('compression');
 var fs = require('fs');
-var parse = require('csv-parse');
+// var parse = require('csv-parse');
 var obj;
 var yearInMs = 31536000000;
 
