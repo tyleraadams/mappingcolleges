@@ -20,7 +20,7 @@
     "build": "gulp"
   },
   "homepage": "https://github.com/tyleraadams/mappingcolleges",
-  "devDependencies": {
+  "dependencies": {
     "del": "^2.0.2",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
