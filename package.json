@@ -1,7 +1,7 @@
 {
   "name": "community_college_challenge",
-  "version": "0.0.0",
-  "main": "index.js",
+  "version": "0.0.1",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/tyleraadams/mappingcolleges.git"
@@ -11,8 +11,13 @@
   "bugs": {
     "url": "https://github.com/tyleraadams/mappingcolleges/issues"
   },
+  "engines": {
+    "node": "0.12.4"
+  },
   "scripts": {
-    "start": "gulp"
+    "start": "node app.js",
+    "postinstall": "npm run build",
+    "build": "gulp"
   },
   "homepage": "https://github.com/tyleraadams/mappingcolleges",
   "devDependencies": {
