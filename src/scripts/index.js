@@ -88,7 +88,7 @@ $(function(){
 
     var statesValues = createChoroplethData(dataArr, 'Percent Part-Time');
 
-    window.starred = dataArr.filter(function (item, index) {
+    var starred = dataArr.filter(function (item, index) {
       item.origIndex = index;
       return item.starred;
     }).map(function (item,index) {
@@ -112,19 +112,19 @@ $(function(){
       return obj;
     });
 
+    window.localStorage.setItem('starred', JSON.stringify(starred));
+
     var theMap = new jvm.Map({
       container: $('#world-map-gdp'),
       map: 'us_merc',
-      markers: window.starred,
+      markers: JSON.parse(window.localStorage.getItem('starred')),
       zoomOnScroll: false,
       backgroundColor: '#FFFFFF',
       series: {
         regions: [{
           attribute: 'fill',
           scale: colorScales['Percent Part-Time'],
-          values: statesValues,
-          // min: jvm.min(statesValues),
-          // max: jvm.max(statesValues)
+          values: statesValues
         }],
       },
 
@@ -143,7 +143,7 @@ $(function(){
       onMarkerClick: function (e, code) {
         var templateMarkup = $('template[name="coleman"]').html();
         var $timelineContainer = $('section.timeline');
-        $timelineContainer.html('<h2>Timeline</h2> <h3>'+ window.starred[code]['name']+'</h3>');
+        $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
 
         $timelineContainer.append(templateMarkup);
         addButtonListeners($timelineContainer);
@@ -158,14 +158,14 @@ $(function(){
 
         // index is a 0 - 4 for the starred colleges, and otherwise the name of the college
         if (/\d+/.test(index)) {
-          sourceArr  = window.starred;
+          sourceArr  = JSON.parse(window.localStorage.getItem('starred'));
           name = sourceArr[index]['name'];
           var found = sourceArr.find(function (item) {
             // console.log(item.name, name);
             return item.name === name;
           });
         } else {
-          sourceArr = window.currentStateData;
+          sourceArr = JSON.parse(window.localStorage.getItem('currentStateData'));
           name = index;
           var found = sourceArr.find(function (item) {
             return item.name === name;
@@ -195,9 +195,9 @@ $(function(){
           theMap.removeMarkers(markersToRemove);
         }
 
-        window.currentStateData = locationData;
+        window.localStorage.setItem('currentStateData', JSON.stringify(locationData));
 
-        window.currentStateData.forEach(function (item) {
+        JSON.parse(window.localStorage.getItem('currentStateData')).forEach(function (item) {
           theMap.addMarker(item.name, item);
         });
       }
