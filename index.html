@@ -7,9 +7,9 @@
   <meta name="description" content="Community College Challenge by WNYC's The Takeaway">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="Community College Challenge" />
-  <meta property="og:url" content="http://community-college-challenge.com" />
-  <meta property="og:image" content="http://community-college-challenge.com/community-college.jpg" />
+  <meta property="og:title" content="Community College Challenge">
+  <meta property="og:url" content="http://community-college-challenge.com">
+  <meta property="og:image" content="http://community-college-challenge.com/community-college.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="article">
   <meta property="og:description" content="The Takeaway's Community College Challenge puts a spotlight on the rich diversity of community colleges.">
@@ -35,7 +35,8 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
   <header class="jumbotron">
-    <h1>Community College Challenge <small class="own-line"> from WNYC's <span class="red bold">The Takeaway</span></small></h1>
+    <h1 class="app-title">Community College Challenge</h1>
+    <h2 class="eyebrow"> from WNYC's <span class="red bold">The Takeaway</span></small></h2>
     <figure>
       <img src="images/community-college.jpg"  width="1270" height="720" alt="Community College"/>
       <!-- srcset="images/community-college-med.jpg 768w, images/community-college.jpg 2000w" -->
@@ -49,20 +50,51 @@
     </article>
     <button class="icon-angle-double-down"> </button>
   </section>
+
   <section class="map">
-    <h2>Map</h2>
-    <h3></h3>
-    <div id='slider'>
-      <form>
-        <input type='radio' name='visualization' value='Percent Part-Time' checked/>Percent Part-Time<br>
-        <input type='radio' name='visualization' value='Percent Non-Traditional Age (25 and Older)'/>Percent Non-Traditional Age (25 and Older)<br>
-        <input type='radio' name='visualization' value='Percent Minority'/>Percent Minority<br>
-        <input type='radio' name='visualization' value='First-Year Retention Rate'/>First-Year Retention Rate<br>
-        <input type='radio' name='visualization' value='Three-Year Graduation Rate'/>Three-Year Graduation Rate<br>
-        <input type='radio' name='visualization' value='Percent of Undergrads Receiving Pell, 2011-12'/>Percent of Undergrads Receiving Pell, 2011-12
-      </form>
-    </div>
+
+
+
     <div id='world-map-gdp'></div>
+    <div id='slider'>
+      <h2>Interact with our data!</h2>
+      <p class="map-desc">We have data on 1005 community colleges from across the country. See state averages and how they compare to other states by hovering. Click on a state to see the community colleges located there. Click on a yellow dot to see our in-depth coverage of that college.</p>
+      <form>
+        <!-- <table>
+          <tr>
+            <td> -->
+        <input type='radio' name='visualization' value='Percent Part-Time' id='part_time' data-desc="Percentage of students enrolled part-time in fall 2011. NCES IPEDS Enrollment Survey - File ef2011_a (Final Release)" checked>
+        <label for="part_time" class="label">Percent Part-Time</label>
+        <!-- </td>
+        <td> -->
+        <input type='radio' name='visualization' id='non_traditional' value='Percent Non-Traditional Age (25 and Older)' data-desc="Percentage of undergraduates enrolled in the fall of 2009 who are 25 years of age and older.  NCES IPEDS Enrollment Survey - File ef2011b (Final Release - Reporting Mandatory in Odd Years Only)">
+        <label for="non_traditional" class="label">Percent Non-Traditional Age <small>(25 and Older)</small></label>
+        <!-- </td>
+        <td> -->
+        <input type='radio' name='visualization' value='Percent Minority' id="minority" data-desc="Percentage of undergraduates enrolled in AY 2011-12 who are Black, Hispanic, or Native American.  NCES IPEDS Enrollment Survey - File effy2012 (Provisional Release)">
+        <label for="minority" class="label">Percent Minority</label>
+        <!-- </td>
+        <td> -->
+        <input type='radio' name='visualization' value='First-Year Retention Rate' id="first_year" data-desc="Percent of fall first-time (full- and Part-time) students returning the following fall semester.  The measure combines the most recent three years (2009,2010,2011).  Calculation: ((Still enrolled or completed fall 2011,2010,2009) / (First-time fall 2010,2009, 2008))*100  NCES, IPEDS 2009, 2010, and 2011 Enrollment Surveys - Files ef2009d (Final Release), ef2010d (Final Release), ef2011d (Final Release)">
+        <label for="first_year" class="label">First-Year Retention Rate</label>
+        <!-- </td>
+        <td> -->
+        <input type='radio' name='visualization' value='Three-Year Graduation Rate' id="three_year" data-desc="Percent of fall first-time full-time students earning a certificate or diploma within three years or who transfer out to another institution.  The measure combines the most recent three years (2009,2010,2011).  Calculation: )(Completed or transferred by summer of 2011,2010,2009) / (First-time fall 2008,2007,2006))*100 NCES, IPEDS 2009, 2010, and 2011 Graduation Rate Surveys - Files gr2011, gr2010, gr2009 (Final Release)">
+        <label for="three_year" class="label">Three-Year Graduation Rate</label>
+       <!--  </td>
+        <td> -->
+        <input type='radio' name='visualization' id="pell" value='Percent of Undergrads Receiving Pell, 2011-12' data-desc="">
+        <label for="pell" class="label">Percent of Undergrads Receiving Pell, <small>2011-12</small></label>
+        <!-- </td>
+        </tr>
+        </table> -->
+      </form>
+       <p class="field-desc"></p>
+    </div>
+
+
+
+
   </section>
 
   <section class="timeline">

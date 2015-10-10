@@ -84,7 +84,7 @@ $(function(){
   }).done(function (data) {
     var dataArr = data;
 
-    $('.map h3').text('Percent Part-Time');
+    $('.field-desc').text($('.slider form input:checked').data('desc'));
 
     var statesValues = createChoroplethData(dataArr, 'Percent Part-Time');
 
@@ -130,7 +130,7 @@ $(function(){
 
       onRegionTipShow: function (event, label, code){
         label.html(
-          '<b>'+label.html()+'</b></br>'+
+          '<b>'+label.html()+'</b>'+
           '<b>'+ $('.map h3').text() + ':</b> ' + trimFloat(statesValues[code])
         );
       },
@@ -172,7 +172,7 @@ $(function(){
           });
         }
 
-        label.html('<b>'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):'+ found['Percent Non-Traditional Age (25 and Older)']+'</b><br/><b> First-Year Retention Rate:'+ found['First-Year Retention Rate']+'</b><br/><b>Size: Annual Unduplicated Headcount: '+ found['Size: Annual Unduplicated Headcount']+'</b><br/><b> Percent Minority: ' + found['Percent Minority'] + '</b><br/> <b> Percent of Undergrads Receiving Pell, 2011-12: ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '</b><br/><b> Percent Part-Time: ' +  found['Percent Part-Time'] + '</b><br/><b> Three-Year Graduation Rate: ' + found['Three-Year Graduation Rate'] + '</b>');
+        label.html('<b class="college_name">'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):</b> '+ found['Percent Non-Traditional Age (25 and Older)']+'<br/><b> First-Year Retention Rate:</b> '+ found['First-Year Retention Rate']+'<br/><b>Size: Annual Unduplicated Headcount:</b> '+ found['Size: Annual Unduplicated Headcount']+'<br/><b> Percent Minority:</b> ' + found['Percent Minority'] + '<br/> <b> Percent of Undergrads Receiving Pell, 2011-12:</b> ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '<br/><b> Percent Part-Time:</b>  ' +  found['Percent Part-Time'] + '<br/><b> Three-Year Graduation Rate: </b> ' + found['Three-Year Graduation Rate']);
       },
 
       placeCollegesOnStateMap: function (code) {
@@ -224,7 +224,7 @@ $(function(){
         // theMap.series.regions[0].scale.minValue = jvm.min(statesValues);
         // theMap.series.regions[0].scale.clearMinValue = jvm.min(statesValues);
 
-        $('.map h3').text(e.target.value);
+        $('.field-desc').text($(e.target).data('desc'));
       }
     });
   }).fail(function (error) {

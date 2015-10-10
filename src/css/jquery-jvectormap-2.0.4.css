@@ -17,13 +17,23 @@ svg {
     display: none;
     border: solid 1px #CDCDCD;
     border-radius: 3px;
-    background: #292929;
-    color: white;
-    font-family: sans-serif, Verdana;
+    background: #FFFFFF;
+    color: #000000;
+    font-family: 'Lato', sans-serif;
     font-size: smaller;
     padding: 3px;
 }
 
+.jvectormap-tip b {
+    font-weight: 700;
+}
+
+.jvectormap-tip b.college_name {
+    font-size: 1.25em;
+    display: inline-block;
+    border-bottom: 1px solid #000000;
+    margin-bottom:-8px;
+}
 .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
     position: absolute;
     left: 10px;
