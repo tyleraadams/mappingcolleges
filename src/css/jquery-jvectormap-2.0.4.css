@@ -32,7 +32,7 @@ svg {
     font-size: 1.25em;
     display: inline-block;
     border-bottom: 1px solid #000000;
-    margin-bottom:4px;
+    margin-bottom: 3.25px;
 }
 .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
     position: absolute;
