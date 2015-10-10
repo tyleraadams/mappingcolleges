@@ -87,8 +87,7 @@
     "Three-Year Graduation Rate": "58",
     "Credentials Awarded per 100 FTE Students": "26.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "63.8",
-    "latitude,longitude": "32.924285,-85.945601",
-    "starred": true
+    "latitude,longitude": "32.924285,-85.945601"
   },
   {
     "Institution Name": "Chattahoochee Valley Community College",
@@ -718,7 +717,8 @@
     "Three-Year Graduation Rate": "40.1",
     "Credentials Awarded per 100 FTE Students": "47.3",
     "Percent of Undergrads Receiving Pell, 2011-12": "60.1",
-    "latitude,longitude": "35.171958,-92.729512"
+    "latitude,longitude": "35.171958,-92.729512",
+    "starred": "true"
   },
   {
     "Institution Name": "Arizona Western College",
@@ -2038,8 +2038,7 @@
     "Three-Year Graduation Rate": "38.1",
     "Credentials Awarded per 100 FTE Students": "19.2",
     "Percent of Undergrads Receiving Pell, 2011-12": "26.2",
-    "latitude,longitude": "37.392643,-121.982139",
-    "starred": true
+    "latitude,longitude": "37.392643,-121.982139"
   },
   {
     "Institution Name": "Modesto Junior College",
@@ -2429,7 +2428,8 @@
     "Three-Year Graduation Rate": "62.4",
     "Credentials Awarded per 100 FTE Students": "29.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "22",
-    "latitude,longitude": "34.405921,-119.697321"
+    "latitude,longitude": "34.405921,-119.697321",
+    "starred": "true"
   },
   {
     "Institution Name": "Santa Monica College",
@@ -5459,7 +5459,8 @@
     "Three-Year Graduation Rate": "57.7",
     "Credentials Awarded per 100 FTE Students": "25.7",
     "Percent of Undergrads Receiving Pell, 2011-12": "53.3",
-    "latitude,longitude": "37.92448,-95.399981"
+    "latitude,longitude": "37.92448,-95.399981",
+    "starred": "true"
   },
   {
     "Institution Name": "Barton County Community College",
@@ -8294,8 +8295,7 @@
     "Three-Year Graduation Rate": "37.2",
     "Credentials Awarded per 100 FTE Students": "28.1",
     "Percent of Undergrads Receiving Pell, 2011-12": "60",
-    "latitude,longitude": "34.625305,-89.970132",
-    "starred": true
+    "latitude,longitude": "34.625305,-89.970132"
   },
   {
     "Institution Name": "Pearl River Community College",
@@ -8400,7 +8400,7 @@
     "Three-Year Graduation Rate": "15.8",
     "Credentials Awarded per 100 FTE Students": "24.2",
     "Percent of Undergrads Receiving Pell, 2011-12": "36.8",
-    "latitude,longitude": "47.381069,-94.66688"
+    "latitude,longitude": "48.113611, -105.192778"
   },
   {
     "Institution Name": "Little Big Horn College",
@@ -10620,8 +10620,7 @@
     "Three-Year Graduation Rate": "41.9",
     "Credentials Awarded per 100 FTE Students": "42",
     "Percent of Undergrads Receiving Pell, 2011-12": "35",
-    "latitude,longitude": "44.318686,-74.120061",
-    "starred": true
+    "latitude,longitude": "44.318686,-74.120061"
   },
   {
     "Institution Name": "Onondaga Community College",
@@ -11851,7 +11850,8 @@
     "Three-Year Graduation Rate": "35.7",
     "Credentials Awarded per 100 FTE Students": "22.8",
     "Percent of Undergrads Receiving Pell, 2011-12": "61.2",
-    "latitude,longitude": "39.96243,-75.165738"
+    "latitude,longitude": "39.96243,-75.165738",
+    "starred": "true"
   },
   {
     "Institution Name": "Delaware County Community College",
@@ -12226,8 +12226,7 @@
     "Three-Year Graduation Rate": "40.3",
     "Credentials Awarded per 100 FTE Students": "21.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "65.5",
-    "latitude,longitude": "32.419711,-80.688521",
-    "starred": true
+    "latitude,longitude": "32.419711,-80.688521"
   },
   {
     "Institution Name": "Tri-County Technical College",
@@ -15077,6 +15076,7 @@
     "Three-Year Graduation Rate": "75.2",
     "Credentials Awarded per 100 FTE Students": "30.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "22.9",
-    "latitude,longitude": "41.591176,-109.237019"
+    "latitude,longitude": "41.591176,-109.237019",
+    "starred": "true"
   }
 ]
