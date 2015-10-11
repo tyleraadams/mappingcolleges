@@ -33,7 +33,7 @@ $(function(){
   }
 
   function addButtonListeners ($container) {
-    $('#close').click(function (event) {
+    $('.close').click(function (event) {
       $(this).off();
       $container.html('');
     });
@@ -141,15 +141,28 @@ $(function(){
       },
 
       onMarkerClick: function (e, code) {
+        $(".se-pre-con").show();;
         var templateMarkup = $('template[name="coleman"]').html();
         var $timelineContainer = $('section.timeline');
         $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
 
         $timelineContainer.append(templateMarkup);
+
         addButtonListeners($timelineContainer);
-        setTimeout(function () {
-          scrollTo($timelineContainer);
-        },1500);
+
+
+        $timelineContainer.find('iframe').load(function(){
+          // $(this).show();
+
+          setTimeout(function () {
+            $(".se-pre-con").fadeOut("slow");;
+            scrollTo($timelineContainer);
+          },2000);
+
+          // console.log('load the iframe ', this.readyState)
+
+        });
+
       },
 
       onMarkerTipShow: function (event, label, index) {

@@ -1,17 +1,13 @@
+html {
+  font-size: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Lora', serif;
   letter-spacing: 0.02em;
   line-height: 1.5;
-}
-
-html {
-  font-size: 100%;
-}
-
-figure {
-  margin: 0 !important;
 }
 
 h1, h2, h3, h4 {
@@ -26,7 +22,6 @@ h3 {
 }
 
 p {
-  /*font-family: 'Lora', serif;*/
   margin: 0 auto;
   max-width: 600px;
 }
@@ -34,17 +29,37 @@ p {
 button {
   border: none;
   background: rgba(0, 0, 0, 0.666);
-  color: white;
+  color: #FFFFFF;
   font-size: 18px;
   width: 36px;
   height: 36px;
   line-height: 18px;
   border-radius: 50%;
   opacity: 0.6;
+  border-radius: 50%;
+  outline: none;
 }
 
-button:hover  {
+button:hover,
+.icon-twitter:hover,
+.icon-facebook:hover,
+.takeaway_logo:hover {
   opacity: 1;
+}
+
+.icon-angle-double-down {
+  position: absolute;
+  bottom: 12px;
+  color: #FFFFFF;
+  font-size: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  height: 48px;
+  line-height: 48px;
+  cursor: pointer;
 }
 
 a {
@@ -56,35 +71,41 @@ small {
   font-size: 0.5em;
 }
 
-
-
-#takeaway_logo {
-  width: 150px;
+section, header {
+  position: relative;
 }
 
-#slider, .map h2, .map h3, h1 {
-  z-index:1;
+.red {
+  border-bottom: 2px solid #F00023;
 }
 
-h2, .map h3 {
-  bottom: 0;
+.bold {
+  font-weight: 700;
 }
 
-.map {
-  padding: 24px;
-  background: white;
-  /*height: 90vh;*/
+
+/*section specific */
+/*====> Header*/
+
+.jumbotron {
+  height: 100vh;
 }
 
-.map h3 {
-  bottom: 25px;
+.jumbotron::before {
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  content: '';
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.app-title, .eyebrow {
+.app-title,
+.eyebrow {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  color: white;
+  transform: translateY(-50%);
+  color: #FFFFFF;
   font-size: 3em;
   width: 100%;
   text-align: center;
@@ -97,99 +118,21 @@ h2, .map h3 {
   font-weight: 300;
 }
 
-img {
-  width: auto;
-  height: 100%;
-}
-
-figure {
-  margin: 0;
-}
-
-section, header {
-  position: relative;
-}
-
-header {
-  height: 100vh;
-}
-
-header::before {
-  position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  content: '';
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.icon-angle-double-down {
-  position: absolute;
-  bottom: 12px;
-  color: white;
-  font-size: 24px;
-  left: 50%;
-  width: 48px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: rgba(0,0,0,0.5);
-  height: 48px;
-  line-height: 48px;
-  cursor: pointer;
-}
-
-footer {
-  display: table !important;
+.poster {
   width: 100%;
-  border: 1px solid #cccccc;
-  padding-top: 12px;
+  height: auto;
 }
 
-footer > * {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  width: 33%;
+.poster-wrapper {
+  margin: 0 !important;
+  width: 100%;
 }
 
-.red {
-  border-bottom: 2px solid #f00023;
-}
-
-.bold {
-  font-weight: 700;
-}
-
-.own-line {
-  display: block;
-  margin-top: 12px;
-}
-
-.icon-twitter, .icon-facebook {
-  display: inline;
-  color: #45619d;
-  font-size: 1.3em;
-}
-
-.icon-twitter {
-  color: #55acee;
-  margin-right: 24px;
-}
-
-.social-media-buttons-container {
-  text-align: right;
-}
-
-.author {
-  text-align: left;
-  padding-left: 24px;
-}
-
+/* ====> ABOUT */
 .about {
-  height: 450px;
-  background: #f00023;
-  color: white;
+  height: 475px;
+  background: #F00023;
+  color: #FFFFFF;
 }
 
 .about article {
@@ -201,60 +144,41 @@ footer > * {
           transform: translate(-50%, -50%);
 }
 
-article p {
-  font-size:1.2em;
+.about h2 {
+  margin-bottom: 24px;
+  font-size: 2em;
+}
+
+.about p {
+  font-size:1.1em;
   margin-bottom: 24px;
 }
 
-.timeline {
-  padding: 24px;
-  clear: both;
+.emphasis {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid #FFFFFF;
 }
 
-.timeline button {
-  float: right;
-  margin-right: 12px;
-}
-
-
-/*section specific */
-.jumbotron {
-
-}
-.about {
-
-}
+/* ====> MAP */
 
 .map {
-
+  padding: 24px;
+  background: #FFFFFF;
 }
 
-.timeline {
-
+.map h3 {
+  bottom: 25px;
 }
-
-
 
 #world-map-gdp {
   width: 66%;
   height: 556px;
   float:left;
-  /*display:inline;*/
 }
 
-input[type=radio] + label {
-  display:block;
-  font-family: 'Lato', sans-serif;
-}
-
-label small {
-  font-weight: 300;
-}
-
-#slider form, .map-desc {
-  margin-bottom: 24px;
-}
-/*** custom checkboxes ***/
 #slider  {
   width: 31%;
   display:inline;
@@ -264,20 +188,103 @@ label small {
 
 .field-desc {
   font-size: 0.75em;
-
 }
-/*label {display: flex-item;}*/
-input[type=radio] { display:none; } /* to hide the radio itself */
-input[type=radio] + label:before {
+
+#slider form, .map-desc {
+  margin-bottom: 24px;
+}
+
+.label {
+  display:block;
+  font-family: 'Lato', sans-serif;
+}
+
+.label small {
+  font-weight: 300;
+}
+/*** custom checkboxes ***/
+
+.viz_radio {
+  display:none;
+} /* to hide the radio itself */
+
+.viz_radio + .label:before {
   font-family: 'fontello';
   display: inline-block;
 }
 
-input[type=radio] + label:before { content: "\e806"; } /* unchecked icon */
-input[type=radio] + label:before { letter-spacing: 10px; } /* space between radio and label */
+.viz_radio + .label:before {
+  content: "\e806";
+  letter-spacing: 10px;
+} /* unchecked icon */
 
-input[type=radio]:checked + label:before { content: "\e807"; } /* checked icon */
-input[type=radio]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
-input[type=radio]:checked + label { font-weight: 700; } /* allow space for check mark */
-input[type=radio]:checked + label small { font-weight: 400; } /* allow space for check mark */
+.viz_radio:checked + .label:before {
+  content: "\e807";
+  letter-spacing: 5px;
+  font-weight: 700;
+} /* checked icon */
 
+.viz_radio:checked + .label small {
+  font-weight: 400;
+}
+
+/* ===> Timeline */
+
+.timeline {
+  padding: 24px;
+  clear: both;
+}
+
+.timeline button {
+  float: right;
+  margin-right: 12px;
+  color: #FFFFFF;
+}
+
+.close {
+  font-family: 'Lato', sans-serif;
+}
+/* ===> Footer */
+
+.footer {
+  display: table !important;
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  padding-top: 12px;
+}
+
+.footer_cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 33%;
+}
+
+.author {
+  text-align: left;
+  padding-left: 24px;
+}
+
+.takeaway_logo {
+  width: 150px;
+  opacity: 0.6;
+}
+
+.icon-twitter, .icon-facebook {
+  display: inline;
+  font-size: 1.3em;
+  opacity: 0.6;
+}
+
+.icon-facebook {
+   color: #45619D;
+}
+
+.icon-twitter {
+  color: #55ACEE;
+  margin-right: 24px;
+}
+
+.social-media-buttons-container {
+  text-align: right;
+}
