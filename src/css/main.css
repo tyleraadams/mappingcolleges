@@ -271,6 +271,7 @@ section, header {
 
 .close {
   font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
 }
 /* ===> Footer */
 

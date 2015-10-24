@@ -141,28 +141,30 @@ $(function(){
       },
 
       onMarkerClick: function (e, code) {
-        $("#loader").show();
-        var templateMarkup = $('template[name="coleman"]').html();
-        var $timelineContainer = $('section.timeline');
-        $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
+        if (JSON.parse(window.localStorage.getItem('starred'))[code]) {
+          $("#loader").show();
 
-        $timelineContainer.append(templateMarkup);
+          var templateMarkup = $('template[name="coleman"]').html();
+          var $timelineContainer = $('section.timeline');
+          $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
 
-        addButtonListeners($timelineContainer);
+          $timelineContainer.append(templateMarkup);
+
+          addButtonListeners($timelineContainer);
 
 
-        $timelineContainer.find('iframe').load(function(){
-          // $(this).show();
+          $timelineContainer.find('iframe').load(function(){
+            // $(this).show();
 
-          setTimeout(function () {
-            $("#loader").fadeOut("slow");;
-            scrollTo($timelineContainer);
-          },3500);
+            setTimeout(function () {
+              $("#loader").fadeOut("slow");;
+              scrollTo($timelineContainer);
+            },3500);
 
-          // console.log('load the iframe ', this.readyState)
+            // console.log('load the iframe ', this.readyState)
 
-        });
-
+          });
+        }
       },
 
       onMarkerTipShow: function (event, label, index) {
