@@ -25,7 +25,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('scripts', function() {
-  gulp.src(['src/scripts/jquery-2.1.4.js', 'src/scripts/jquery-jvectormap-2.0.4.js', 'src/scripts/jquery-jvectormap-us-merc.js', 'src/scripts/index.js'])
+  gulp.src(['src/scripts/jquery-2.1.4.js', 'src/scripts/jquery-jvectormap-2.0.4.js', 'src/scripts/jquery-jvectormap-us-merc.js', 'src/scripts/index.js', 'src/scripts/css3-animate-it.js'])
   .pipe(concat('main.js'))
   .pipe(gulp.dest('public/js/'))
   .pipe(rename({suffix: '.min'}))

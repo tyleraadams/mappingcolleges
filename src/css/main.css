@@ -49,7 +49,7 @@ button:hover,
 
 .icon-angle-double-down {
   position: absolute;
-  bottom: 12px;
+  bottom: 7%;
   color: #FFFFFF;
   font-size: 24px;
   left: 50%;
@@ -77,6 +77,14 @@ section, header {
 
 .red {
   border-bottom: 2px solid #F00023;
+  transition: all 0.25s ease-out;
+}
+
+.red:hover {
+  background: #F00023;
+  color: #FFFFFF;
+  border-bottom: 0;
+  /*padding: 2px;*/
 }
 
 .bold {
@@ -88,10 +96,10 @@ section, header {
 /*====> Header*/
 
 .jumbotron {
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
-.jumbotron::before {
+/*.jumbotron::before {
   position: absolute;
   top:0;
   bottom:0;
@@ -99,16 +107,16 @@ section, header {
   right:0;
   content: '';
   background: rgba(0, 0, 0, 0.4);
-}
+}*/
 
 .app-title,
 .eyebrow {
-  top: 50%;
-  transform: translateY(-50%);
-  color: #FFFFFF;
-  font-size: 3em;
-  width: 100%;
-  text-align: center;
+  left: -5000px;
+  /*transform: translateY(-50%);*/
+  /*color: #FFFFFF;*/
+  /*font-size: 3em;*/
+  /*width: 100%;*/
+  /*text-align: center;*/
   position: absolute;
 }
 
@@ -130,33 +138,53 @@ section, header {
 
 /* ====> ABOUT */
 .about {
-  height: 475px;
-  background: #F00023;
-  color: #FFFFFF;
+  /*height: 475px;*/
+  margin-top: -10px;
+  /*background: url('../images/community-college.jpg') no-repeat center;*/
+  background-size: cover;
+  color: #000000;
+  padding:10%;
+}
+.about::before {
+  /*position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  content: '';
+  background: rgba(0, 0, 0, 0.5);*/
 }
 
 .about article {
-  width: 500px;
-  position: absolute;
-  left:50%;
-  top:50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  display: inline-block;
+  position: relative;
 }
 
 .about h2 {
   margin-bottom: 24px;
-  font-size: 2em;
+  font-size: 2.25em;
+  text-align: center;
 }
 
 .about p {
-  font-size:1.1em;
+  font-size:1.5em;
+  margin-top: 24px;
   margin-bottom: 24px;
+  max-width: 600px;
 }
-
+.about p:first-of-type {
+  float: left;
+  margin-left: 5%;
+}
+.about p:last-of-type {
+  float: right;
+  margin-right: 5%;
+  text-align: right;
+  margin-bottom:0;
+}
 .emphasis {
   font-family: 'Lato', sans-serif;
-  font-size: 1.3em;
+  /*font-size: 1.3em;*/
   font-weight: 700;
   letter-spacing: 0.04em;
   border-bottom: 2px solid #FFFFFF;
@@ -288,3 +316,117 @@ section, header {
 .social-media-buttons-container {
   text-align: right;
 }
+
+@media screen and (max-device-width: 568px) {
+
+  #world-map-gdp {
+    width: 100%;
+    height: 240px;
+    float:none;
+    display:block;
+  }
+
+  #slider  {
+    width: 100%;
+    display:block;
+    float: none;
+  }
+
+  .about h2 {
+    font-size: 1.5em;
+  }
+
+  .about p:first-of-type {
+    float: none;
+    margin-left: 0;
+  }
+
+  .about p:last-of-type {
+    float: none;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .about p {
+    font-size: 1em;
+  }
+
+  .about .icon-angle-double-down {
+    bottom: 0;
+  }
+
+  .jumbotron .icon-angle-double-down {
+    display:none;
+  }
+
+  .footer {
+    display: block !important;
+  }
+
+  .footer_cell {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    padding: 0;
+  }
+
+}
+
+
+@media screen and (max-width: 720px) {
+
+  #world-map-gdp {
+    width: 100%;
+    height: 240px;
+    float:none;
+    display:block;
+  }
+
+  #slider  {
+    width: 100%;
+    display:block;
+    float: none;
+  }
+
+  .about h2 {
+    font-size: 1.5em;
+  }
+
+  .about p:first-of-type {
+    float: none;
+    margin-left: 0;
+  }
+
+  .about p:last-of-type {
+    float: none;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .about p {
+    font-size: 1em;
+  }
+
+  .about .icon-angle-double-down {
+    bottom: 0;
+  }
+
+  .jumbotron .icon-angle-double-down {
+    display:none;
+  }
+
+  .footer {
+    display: block !important;
+  }
+
+  .footer_cell {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    padding: 0;
+  }
+
+}
+

@@ -141,7 +141,7 @@ $(function(){
       },
 
       onMarkerClick: function (e, code) {
-        $(".se-pre-con").show();;
+        $("#loader").show();
         var templateMarkup = $('template[name="coleman"]').html();
         var $timelineContainer = $('section.timeline');
         $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
@@ -155,9 +155,9 @@ $(function(){
           // $(this).show();
 
           setTimeout(function () {
-            $(".se-pre-con").fadeOut("slow");;
+            $("#loader").fadeOut("slow");;
             scrollTo($timelineContainer);
-          },2000);
+          },3500);
 
           // console.log('load the iframe ', this.readyState)
 

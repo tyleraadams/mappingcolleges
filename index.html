@@ -22,7 +22,7 @@
     <style>
       .no-js #loader { display: none;  }
       .js #loader { display: block; position: absolute; left: 100px; top: 0; }
-      .se-pre-con {
+      #loader {
         display: none;
         position: fixed;
         left: 0px;
@@ -30,7 +30,16 @@
         width: 100%;
         height: 100%;
         z-index: 9999;
-        background: url(images/preloader.gif) center no-repeat rgba(255,255,255, 0.75);
+        background: rgba(255,255,255, 0.75);
+        /*background: url(images/preloader.gif) center no-repeat rgba(255,255,255, 0.75);*/
+      }
+
+      .la-ball-clip-rotate-pulse {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+
       }
     </style>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700|Lora:400,700' rel='stylesheet' type='text/css' async>
@@ -44,21 +53,26 @@
     <!--[if lt IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="se-pre-con"></div>
+    <div id="loader">
+      <div style="color: #f4696b" class="la-ball-clip-rotate-pulse la-3x">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <header class="jumbotron">
       <h1 class="app-title">Community College Challenge</h1>
       <h2 class="eyebrow"> from WNYC's <span class="red bold">The Takeaway</span></small></h2>
       <figure class="poster-wrapper">
-        <img class="poster" src="images/community-college.jpg"  width="1270" height="720" alt="Community College"/>
+        <img class="poster" src="images/CommunityCollegeChalllenge_WebHeader.png"  width="1280" height="720" alt="Community College"/>
         <!-- srcset="images/community-college-med.jpg 768w, images/community-college.jpg 2000w" -->
       </figure>
       <button class="icon-angle-double-down"></button>
     </header>
     <section class="about">
-      <article>
-        <h2>About The Project</h2>
-        <p>Community colleges are key to growing our economy and expanding opportunity, but less than 1 in 5 students at community colleges today will earn a bachelor's degree.</p>
-        <p>The Takeaway's <span class="emphasis">Community College Challenge</span> puts a spotlight on the rich diversity of community colleges, the role they play in advancing opportunity, and the myriad challenges they and their students face.</p>
+      <article class="animatedParent animateOnce" data-sequence='500'>
+        <h2 class="">About The Project</h2>
+        <p class="animated bounceInLeft slow" data-id='1'>Community colleges are key to growing our economy and expanding opportunity, but less than 1 in 5 students at community colleges today will earn a bachelor's degree.</p>
+        <p class="animated bounceInRight slow" data-id='2'>The Takeaway's <a href="http://thetakeaway.org" class="red"><span class="emphasis">Community College Challenge</span></a> puts a spotlight on the rich diversity of community colleges, the role they play in advancing opportunity, and the myriad challenges they and their students face.</p>
       </article>
       <button class="icon-angle-double-down"> </button>
     </section>
@@ -101,7 +115,7 @@
     <template name="miller">
       <!--CRYSTAL-->
       <button class="icon-volume-up"></button>
-      <button class="close">x</button>
+      <button class="close">X</button>
       <iframe id="miller" frameborder="0" height="650" src="http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0ArmAJfFcZtYadFA4NGhUbHk1dUF6eml0MVQ4bUVXb2c&amp;font=Bevan-PotanoSans&amp;maptype=toner&amp;lang=en&amp;height=650" width="100%">
 
       </iframe>
