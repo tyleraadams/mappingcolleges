@@ -1,13 +1,12 @@
 $(function(){
   var chropolethDataLibrary = {};
-
   var colorScales = {
-    'Percent Part-Time': ['#FFB581', '#FF8747', '#C06000'],
-    'Percent Non-Traditional Age (25 and Older)': ['#FF8181', '#FF4747', '#C01D00'],
-    'Percent Minority': ['#98FF81', '#4DFF47', '#10C000'],
-    'First-Year Retention Rate': ['#81D6FF', '#4766FF', '#000DC0 '],
-    'Three-Year Graduation Rate': ['#D881FF', '#B347FF', '#8400C0'],
-    'Percent of Undergrads Receiving Pell, 2011-12': ['#FFE781', '#FFF747', '#BEC000']
+    'Percent Part-Time': ['#fee6ce','#fdae6b','#e6550d'],
+    'Percent Non-Traditional Age (25 and Older)': ['#fee0d2','#fc9272','#de2d26'],
+    'Percent Minority': ['#e5f5e0','#a1d99b','#31a354'],
+    'First-Year Retention Rate': ['#deebf7','#9ecae1','#3182bd'],
+    'Three-Year Graduation Rate': ['#efedf5','#bcbddc','#756bb1'],
+    'Percent of Undergrads Receiving Pell, 2011-12': ['#fbf9dc', '#f5f3b7', '#eaea83']
   };
 
   function parseLatLon (input) {
@@ -41,6 +40,17 @@ $(function(){
 
   function trimFloat (number) {
     return Math.floor(number * 100) / 100;
+  }
+
+  function setStartingData (dataArr, field) {
+    var $formCheckbox = $('form').find($('[value="'+ field + '"]'));
+    $formCheckbox.attr('checked', 'true');
+
+    $('.field-desc').text($('form input:checked').data('desc'));
+
+    var statesValues = createChoroplethData(dataArr, field);
+
+    return statesValues;
   }
 
   function createChoroplethData (dataArr, field) {
@@ -83,10 +93,8 @@ $(function(){
     dataType: 'json'
   }).done(function (data) {
     var dataArr = data;
-
-    $('.field-desc').text($('.slider form input:checked').data('desc'));
-
-    var statesValues = createChoroplethData(dataArr, 'Percent Part-Time');
+    var startingField = $('form input:checked').attr('value');
+    var statesValues = setStartingData(dataArr, startingField);
 
     var starred = dataArr.filter(function (item, index) {
       item.origIndex = index;
@@ -106,7 +114,8 @@ $(function(){
         starred: item.starred,
         link: slugify(item['Institution Name']),
         style: {
-          fill: 'yellow'
+          fill: '#FFFF00',
+          "stroke-width": 0
         }
       };
       return obj;
@@ -120,15 +129,26 @@ $(function(){
       markers: JSON.parse(window.localStorage.getItem('starred')),
       zoomOnScroll: false,
       backgroundColor: '#FFFFFF',
+      markerStyle: {
+        initial: {
+        },
+        hover: {
+          "stroke-width": 5,
+          "stroke": '#FFFFFF',
+          cursor: 'default'
+        }
+      },
       series: {
         regions: [{
           attribute: 'fill',
-          scale: colorScales['Percent Part-Time'],
-          values: statesValues
-        }],
+          scale: colorScales[startingField] ,
+          values: statesValues,
+          min: 10,
+          max: 75
+        }]
       },
 
-      onRegionTipShow: function (event, label, code){
+      onRegionTipShow: function (event, label, code) {
         label.html(
           '<b>'+label.html()+'</b>'+
           '<b>'+ $('.map h3').text() + ':</b> ' + trimFloat(statesValues[code])
@@ -159,7 +179,7 @@ $(function(){
             setTimeout(function () {
               $("#loader").fadeOut("slow");;
               scrollTo($timelineContainer);
-            },3500);
+            }, 3500);
 
             // console.log('load the iframe ', this.readyState)
 
@@ -175,8 +195,18 @@ $(function(){
         if (/\d+/.test(index)) {
           sourceArr  = JSON.parse(window.localStorage.getItem('starred'));
           name = sourceArr[index]['name'];
+
           var found = sourceArr.find(function (item) {
-            // console.log(item.name, name);
+            if (name === "CUNY Guttman Community College") {
+              item['Percent Non-Traditional Age (25 and Older)'] = "N/A";
+              item['First-Year Retention Rate'] = "N/A";
+              item['Size: Annual Unduplicated Headcount'] = "N/A";
+              item['Percent Minority'] = "N/A";
+              item['Percent of Undergrads Receiving Pell, 2011-12'] = "N/A";
+              item['Percent Part-Time'] = "N/A";
+              item['Three-Year Graduation Rate'] = "N/A";
+            }
+
             return item.name === name;
           });
         } else {
@@ -197,7 +227,18 @@ $(function(){
           return item.State === code && !item.starred;
         }).map(function (item,index) {
           var latLng =  parseLatLon(item['latitude,longitude']);
-          return { latLng: latLng, name: item['Institution Name'],  'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'], 'First-Year Retention Rate': item['First-Year Retention Rate'], 'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'], 'Percent Minority': item['Percent Minority'], 'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],'Percent Part-Time': item['Percent Part-Time'], 'Three-Year Graduation Rate': item['Three-Year Graduation Rate'] };
+          return { latLng: latLng, name: item['Institution Name'],  'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'], 'First-Year Retention Rate': item['First-Year Retention Rate'], 'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'], 'Percent Minority': item['Percent Minority'], 'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],'Percent Part-Time': item['Percent Part-Time'], 'Three-Year Graduation Rate': item['Three-Year Graduation Rate'],
+            style: {
+              fill: '#14a797',
+              "stroke-width" : 0 ,
+              hover: {
+                "fill-opacity": 0.6,
+                "stroke-width": 0,
+                cursor: 'default'
+
+              }
+            }
+          };
         });
 
         if (theMap.markers) {
@@ -212,7 +253,8 @@ $(function(){
 
         window.localStorage.setItem('currentStateData', JSON.stringify(locationData));
 
-        JSON.parse(window.localStorage.getItem('currentStateData')).forEach(function (item) {
+        locationData.forEach(function (item) {
+          // item.style.fill = {'#14a797';
           theMap.addMarker(item.name, item);
         });
       }
@@ -224,12 +266,19 @@ $(function(){
       if (e.target && e.target.value) {
         statesValues = createChoroplethData(dataArr, e.target.value);
         // commented out code here appears to not be doing anything, but just in case
-        // theMap.series.regions[0].clear();
+        theMap.series.regions[0].clear();
         // can't tell if this is actually changing the min and max values, but it was what was suggested in https://github.com/bjornd/jvectormap/issues/221
+        // theMap.series.regions[0] = {
+        //   attribute: 'fill',
+        //   scale: colorScales[e.target.value],
+        //   values: statesValues,
+        //   normalizeFunction: 'polynomial'
+        // };
+        // var newDataSeries = new
         // theMap.params.min = jvm.min(statesValues);
         // theMap.params.max = jvm.max(statesValues);
-
         theMap.series.regions[0].setValues(statesValues);
+
 
         theMap.series.regions[0].setScale(colorScales[e.target.value]);
 

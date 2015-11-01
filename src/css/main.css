@@ -10,13 +10,21 @@ body {
   line-height: 1.5;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: 'Lato', sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 0;
   margin-top: 0;
+  text-transform: uppercase;
+  color: #f3d541;
 }
 
+h2 {
+  letter-spacing: 0.08em;
+}
 h3 {
   font-weight: 400;
 }
@@ -35,9 +43,10 @@ button {
   height: 36px;
   line-height: 18px;
   border-radius: 50%;
-  opacity: 0.6;
+  opacity: 0.8;
   border-radius: 50%;
   outline: none;
+  transition: opacity 300ms;
 }
 
 button:hover,
@@ -71,20 +80,27 @@ small {
   font-size: 0.5em;
 }
 
-section, header {
+section,
+header,
+footer {
   position: relative;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .red {
+  padding: 0 4px;
   border-bottom: 2px solid #F00023;
-  transition: all 0.25s ease-out;
+  background-size: 100% 200%;
+  background-image: linear-gradient(to top, #F00023 50%, transparent 50%);
+  transition: background-position 300ms, color 500ms;
+  background-position: 0 0;
 }
 
 .red:hover {
-  background: #F00023;
   color: #FFFFFF;
-  border-bottom: 0;
-  /*padding: 2px;*/
+  background-position: 0 100%;
 }
 
 .bold {
@@ -92,31 +108,16 @@ section, header {
 }
 
 
-/*section specific */
-/*====> Header*/
+/*! ----- section specific ---- ! */
 
+/*====> HEADER*/
 .jumbotron {
-  /*height: 100vh;*/
+  z-index: 2;
 }
-
-/*.jumbotron::before {
-  position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  content: '';
-  background: rgba(0, 0, 0, 0.4);
-}*/
 
 .app-title,
 .eyebrow {
   left: -5000px;
-  /*transform: translateY(-50%);*/
-  /*color: #FFFFFF;*/
-  /*font-size: 3em;*/
-  /*width: 100%;*/
-  /*text-align: center;*/
   position: absolute;
 }
 
@@ -137,22 +138,12 @@ section, header {
 }
 
 /* ====> ABOUT */
+
 .about {
-  /*height: 475px;*/
   margin-top: -10px;
-  /*background: url('../images/community-college.jpg') no-repeat center;*/
   background-size: cover;
   color: #000000;
   padding:10%;
-}
-.about::before {
-  /*position: absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  content: '';
-  background: rgba(0, 0, 0, 0.5);*/
 }
 
 .about article {
@@ -161,9 +152,10 @@ section, header {
 }
 
 .about h2 {
-  margin-bottom: 24px;
   font-size: 2.25em;
   text-align: center;
+  width: 90%;
+  margin: 0 auto 24px;
 }
 
 .about p {
@@ -172,22 +164,24 @@ section, header {
   margin-bottom: 24px;
   max-width: 600px;
 }
+
 .about p:first-of-type {
   float: left;
   margin-left: 5%;
 }
+
 .about p:last-of-type {
   float: right;
   margin-right: 5%;
   text-align: right;
   margin-bottom:0;
 }
+
 .emphasis {
   font-family: 'Lato', sans-serif;
-  /*font-size: 1.3em;*/
   font-weight: 700;
   letter-spacing: 0.04em;
-  border-bottom: 2px solid #FFFFFF;
+  /*border-bottom: 2px solid #FFFFFF;*/
 }
 
 /* ====> MAP */
@@ -227,6 +221,10 @@ section, header {
   font-family: 'Lato', sans-serif;
 }
 
+.label:hover {
+  cursor: pointer;
+}
+
 .label small {
   font-weight: 300;
 }
@@ -249,8 +247,12 @@ section, header {
 .viz_radio:checked + .label:before {
   content: "\e807";
   letter-spacing: 5px;
-  font-weight: 700;
+  font-weight: 900;
 } /* checked icon */
+
+.viz_radio:checked + .label {
+  font-weight: 900;
+}
 
 .viz_radio:checked + .label small {
   font-weight: 400;
@@ -278,7 +280,7 @@ section, header {
 .footer {
   display: table !important;
   width: 100%;
-  border: 1px solid #CCCCCC;
+  border-top: 1px solid #CCCCCC;
   padding-top: 12px;
 }
 
@@ -296,13 +298,15 @@ section, header {
 
 .takeaway_logo {
   width: 150px;
-  opacity: 0.6;
+  opacity: 0.8;
+  transition: opacity 300ms;
 }
 
 .icon-twitter, .icon-facebook {
   display: inline;
   font-size: 1.3em;
-  opacity: 0.6;
+  opacity: 0.8;
+  transition: opacity 300ms;
 }
 
 .icon-facebook {
@@ -318,7 +322,7 @@ section, header {
   text-align: right;
 }
 
-@media screen and (max-device-width: 568px) {
+@media screen and (max-width: 720px) {
 
   #world-map-gdp {
     width: 100%;
@@ -335,6 +339,7 @@ section, header {
 
   .about h2 {
     font-size: 1.5em;
+    width: 100%;
   }
 
   .about p:first-of-type {
@@ -374,8 +379,7 @@ section, header {
 
 }
 
-
-@media screen and (max-width: 720px) {
+@media screen and (max-device-width: 568px) {
 
   #world-map-gdp {
     width: 100%;
@@ -392,6 +396,7 @@ section, header {
 
   .about h2 {
     font-size: 1.5em;
+    width: 100%;
   }
 
   .about p:first-of-type {

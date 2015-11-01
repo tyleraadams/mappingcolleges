@@ -717,8 +717,7 @@
     "Three-Year Graduation Rate": "40.1",
     "Credentials Awarded per 100 FTE Students": "47.3",
     "Percent of Undergrads Receiving Pell, 2011-12": "60.1",
-    "latitude,longitude": "35.171958,-92.729512",
-    "starred": "true"
+    "latitude,longitude": "35.171958,-92.729512"
   },
   {
     "Institution Name": "Arizona Western College",
@@ -2428,8 +2427,7 @@
     "Three-Year Graduation Rate": "62.4",
     "Credentials Awarded per 100 FTE Students": "29.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "22",
-    "latitude,longitude": "34.405921,-119.697321",
-    "starred": "true"
+    "latitude,longitude": "34.405921,-119.697321"
   },
   {
     "Institution Name": "Santa Monica College",
@@ -3539,7 +3537,8 @@
     "Three-Year Graduation Rate": "52.2",
     "Credentials Awarded per 100 FTE Students": "45.9",
     "Percent of Undergrads Receiving Pell, 2011-12": "46.5",
-    "latitude,longitude": "28.522149,-81.464103"
+    "latitude,longitude": "28.522149,-81.464103",
+    "starred": "true"
   },
   {
     "Institution Name": "Abraham Baldwin Agricultural College",
@@ -5459,8 +5458,7 @@
     "Three-Year Graduation Rate": "57.7",
     "Credentials Awarded per 100 FTE Students": "25.7",
     "Percent of Undergrads Receiving Pell, 2011-12": "53.3",
-    "latitude,longitude": "37.92448,-95.399981",
-    "starred": "true"
+    "latitude,longitude": "37.92448,-95.399981"
   },
   {
     "Institution Name": "Barton County Community College",
@@ -10353,6 +10351,22 @@
     "latitude,longitude": "40.83705,-73.865429"
   },
   {
+    "Institution Name": "CUNY Guttman Community College",
+    "City": "New York",
+    "State": "NY",
+    "Size: Annual Unduplicated Headcount": "0",
+    "Percent Part-Time": "0",
+    "Percent Non-Traditional Age (25 and Older)": "0",
+    "Percent Minority": "0",
+    "Percent of First-Time Undergrads who are Full-Time": "0",
+    "First-Year Retention Rate": "0",
+    "Three-Year Graduation Rate": "0",
+    "Credentials Awarded per 100 FTE Students": "0",
+    "Percent of Undergrads Receiving Pell, 2011-12": "0",
+    "latitude,longitude": "40.7528906,-73.9862344",
+    "starred": "true"
+  },
+  {
     "Institution Name": "CUNY Hostos Community College",
     "City": "Bronx",
     "State": "NY",
@@ -11850,8 +11864,7 @@
     "Three-Year Graduation Rate": "35.7",
     "Credentials Awarded per 100 FTE Students": "22.8",
     "Percent of Undergrads Receiving Pell, 2011-12": "61.2",
-    "latitude,longitude": "39.96243,-75.165738",
-    "starred": "true"
+    "latitude,longitude": "39.96243,-75.165738"
   },
   {
     "Institution Name": "Delaware County Community College",
@@ -12361,7 +12374,8 @@
     "Three-Year Graduation Rate": "73",
     "Credentials Awarded per 100 FTE Students": "47",
     "Percent of Undergrads Receiving Pell, 2011-12": "49.6",
-    "latitude,longitude": "44.901127,-97.095269"
+    "latitude,longitude": "44.901127,-97.095269",
+    "starred": "true"
   },
   {
     "Institution Name": "Mitchell Technical Institute",
@@ -12871,7 +12885,8 @@
     "Three-Year Graduation Rate": "25.3",
     "Credentials Awarded per 100 FTE Students": "33.8",
     "Percent of Undergrads Receiving Pell, 2011-12": "49.8",
-    "latitude,longitude": "31.751813,-106.369039"
+    "latitude,longitude": "31.751813,-106.369039",
+    "starred": "true"
   },
   {
     "Institution Name": "Frank Phillips College",
@@ -14491,7 +14506,8 @@
     "Three-Year Graduation Rate": "55.7",
     "Credentials Awarded per 100 FTE Students": "42.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "33.5",
-    "latitude,longitude": "46.078431,-118.275497"
+    "latitude,longitude": "46.078431,-118.275497",
+    "starred": "true"
   },
   {
     "Institution Name": "Wenatchee Valley College",
@@ -15076,7 +15092,6 @@
     "Three-Year Graduation Rate": "75.2",
     "Credentials Awarded per 100 FTE Students": "30.4",
     "Percent of Undergrads Receiving Pell, 2011-12": "22.9",
-    "latitude,longitude": "41.591176,-109.237019",
-    "starred": "true"
+    "latitude,longitude": "41.591176,-109.237019"
   }
 ]

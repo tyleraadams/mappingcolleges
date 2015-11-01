@@ -1,4 +1,4 @@
-var express = require('express');
+ var express = require('express');
 var app = express();
 var path = require('path');
 var compression = require('compression');
@@ -25,7 +25,7 @@ app.get('/', function (req, res){
 });
 
 app.get('/data.json', function (req, res) {
-  fs.readFile('communit_college_data.min.json', 'utf8', function (err, data) {
+  fs.readFile('./public/data/community_college_data.min.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
     res.setHeader('Cache-Control', 'public, max-age=' + yearInMs.toString());

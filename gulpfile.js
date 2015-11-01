@@ -6,7 +6,8 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
-  del = require('del');
+  del = require('del'),
+  jsonminify = require('gulp-jsonminify');
 
 gulp.task('styles', function() {
   return gulp.src('src/css/*.css')
@@ -31,7 +32,14 @@ gulp.task('scripts', function() {
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
   .pipe(gulp.dest('public/js/'))
+  .pipe(notify({ message: 'Scripts task complete' }))
+});
 
+gulp.task('minify', function () {
+  return gulp.src(['public/data/community_college_data.json'])
+      .pipe(jsonminify())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('public/data/'));
 });
 
 gulp.task('lint', function() {
@@ -39,6 +47,12 @@ gulp.task('lint', function() {
     .pipe(eslint())
     .pipe(eslint.format());
 });
+
+gulp.task('watch', function() {
+  gulp.watch('src/css/*.css', ['styles']);
+  gulp.watch('src/scripts/*.js', ['scripts']);
+});
+
 
 gulp.task('default', ['scripts', 'styles', 'clean']);
 
