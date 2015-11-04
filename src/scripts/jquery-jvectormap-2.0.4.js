@@ -1556,7 +1556,7 @@ jvm.DataSeries = function(params, elements, map) {
 
   this.values = params.values || {};
   this.setValues(this.values);
-
+  console.log(this.params);
   if (this.params.legend) {
     this.legend = new jvm.Legend($.extend({
       map: this.map,
@@ -1606,17 +1606,35 @@ jvm.DataSeries.prototype = {
       }
 
       if (typeof this.params.min === 'undefined') {
+
         this.scale.setMin(min);
-        this.params.min = min;
+        // this.params.min = min;
+        console.log(min);
       } else {
         this.scale.setMin(this.params.min);
       }
 
       if (typeof this.params.max === 'undefined') {
         this.scale.setMax(max);
-        this.params.max = max;
+        // this.params.max = max;
       } else {
         this.scale.setMax(this.params.max);
+      }
+      console.log('this: ', this );
+      if (this.legend) {
+        this.legend.series = this;
+        this.legend.params.title = this.currentDataField;
+        this.legend.render();
+      } else {
+        this.currentDataField = this.currentDataField || $('form input:checked').attr('value');
+        console.log('!!1 ', this.currentDataField);
+        this.legend = new jvm.Legend($.extend({
+          map: this.map,
+          title: this.currentDataField,
+          series: this
+        }, this.params.legend));
+        // this.legend.params.title = this.currentDataField;
+        // this.legend.render();
       }
 
       for (cc in values) {

@@ -49,6 +49,12 @@ button {
   transition: opacity 300ms;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+}
+
 button:hover,
 .icon-twitter:hover,
 .icon-facebook:hover,
@@ -81,7 +87,6 @@ small {
 }
 
 section,
-header,
 footer {
   position: relative;
   max-width: 1280px;
@@ -113,6 +118,10 @@ footer {
 /*====> HEADER*/
 .jumbotron {
   z-index: 2;
+  background: #e01837;
+  height: 100vh;
+  position:relative;
+  overflow: hidden;
 }
 
 .app-title,
@@ -133,8 +142,13 @@ footer {
 }
 
 .poster-wrapper {
-  margin: 0 !important;
+  margin: 0 auto !important;
   width: 100%;
+  max-width: 1280px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
 }
 
 /* ====> ABOUT */
@@ -143,7 +157,7 @@ footer {
   margin-top: -10px;
   background-size: cover;
   color: #000000;
-  padding:10%;
+  padding: 5% 10% 10%;
 }
 
 .about article {
@@ -208,8 +222,22 @@ footer {
   padding: 0 1%;
 }
 
+.jvectormap-legend {
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Lato', sans-serif;
+}
+
+.legend ul {
+  font-size: 0.85em;
+  font-family: 'Lato', sans-serif;
+}
+.legend ul span {
+  padding-left: 0.5em;
+}
 .field-desc {
   font-size: 0.75em;
+  min-height: 145px;
 }
 
 #slider form, .map-desc {

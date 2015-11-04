@@ -49,7 +49,6 @@ $(function(){
     $('.field-desc').text($('form input:checked').data('desc'));
 
     var statesValues = createChoroplethData(dataArr, field);
-
     return statesValues;
   }
 
@@ -122,7 +121,7 @@ $(function(){
     });
 
     window.localStorage.setItem('starred', JSON.stringify(starred));
-
+    console.log('startingField: ', startingField);
     var theMap = new jvm.Map({
       container: $('#world-map-gdp'),
       map: 'us_merc',
@@ -143,8 +142,14 @@ $(function(){
           attribute: 'fill',
           scale: colorScales[startingField] ,
           values: statesValues,
+          currentDataField: startingField
+          /*,
           min: 10,
-          max: 75
+          max: 75,
+          legend: {
+            horizontal: true
+          }
+          */
         }]
       },
 
@@ -197,15 +202,15 @@ $(function(){
           name = sourceArr[index]['name'];
 
           var found = sourceArr.find(function (item) {
-            if (name === "CUNY Guttman Community College") {
-              item['Percent Non-Traditional Age (25 and Older)'] = "N/A";
-              item['First-Year Retention Rate'] = "N/A";
-              item['Size: Annual Unduplicated Headcount'] = "N/A";
-              item['Percent Minority'] = "N/A";
-              item['Percent of Undergrads Receiving Pell, 2011-12'] = "N/A";
-              item['Percent Part-Time'] = "N/A";
-              item['Three-Year Graduation Rate'] = "N/A";
-            }
+            // if (name === "CUNY Guttman Community College") {
+            //   item['Percent Non-Traditional Age (25 and Older)'] = "N/A";
+            //   item['First-Year Retention Rate'] = "N/A";
+            //   item['Size: Annual Unduplicated Headcount'] = "N/A";
+            //   item['Percent Minority'] = "N/A";
+            //   item['Percent of Undergrads Receiving Pell, 2011-12'] = "N/A";
+            //   item['Percent Part-Time'] = "N/A";
+            //   item['Three-Year Graduation Rate'] = "N/A";
+            // }
 
             return item.name === name;
           });
@@ -216,8 +221,12 @@ $(function(){
             return item.name === name;
           });
         }
+        if (name === "CUNY Guttman Community College") {
+          label.html('<b class="college_name">'+ name +'</b><br><p>Click for more info</p>');
+        } else {
 
-        label.html('<b class="college_name">'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):</b> '+ found['Percent Non-Traditional Age (25 and Older)']+'<br/><b> First-Year Retention Rate:</b> '+ found['First-Year Retention Rate']+'<br/><b>Size: Annual Unduplicated Headcount:</b> '+ found['Size: Annual Unduplicated Headcount']+'<br/><b> Percent Minority:</b> ' + found['Percent Minority'] + '<br/> <b> Percent of Undergrads Receiving Pell, 2011-12:</b> ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '<br/><b> Percent Part-Time:</b>  ' +  found['Percent Part-Time'] + '<br/><b> Three-Year Graduation Rate: </b> ' + found['Three-Year Graduation Rate']);
+          label.html('<b class="college_name">'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):</b> '+ found['Percent Non-Traditional Age (25 and Older)']+'<br/><b> First-Year Retention Rate:</b> '+ found['First-Year Retention Rate']+'<br/><b>Size: Annual Unduplicated Headcount:</b> '+ found['Size: Annual Unduplicated Headcount']+'<br/><b> Percent Minority:</b> ' + found['Percent Minority'] + '<br/> <b> Percent of Undergrads Receiving Pell, 2011-12:</b> ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '<br/><b> Percent Part-Time:</b>  ' +  found['Percent Part-Time'] + '<br/><b> Three-Year Graduation Rate: </b> ' + found['Three-Year Graduation Rate']);
+        }
       },
 
       placeCollegesOnStateMap: function (code) {
@@ -265,7 +274,9 @@ $(function(){
 
       if (e.target && e.target.value) {
         statesValues = createChoroplethData(dataArr, e.target.value);
+        theMap.series.regions[0].currentDataField = e.target.value;
         // commented out code here appears to not be doing anything, but just in case
+        // theMap.series.regions[0].reset();
         theMap.series.regions[0].clear();
         // can't tell if this is actually changing the min and max values, but it was what was suggested in https://github.com/bjornd/jvectormap/issues/221
         // theMap.series.regions[0] = {
@@ -277,6 +288,7 @@ $(function(){
         // var newDataSeries = new
         // theMap.params.min = jvm.min(statesValues);
         // theMap.params.max = jvm.max(statesValues);
+        // theMap.params.legend = {'horizontal': true};
         theMap.series.regions[0].setValues(statesValues);
 
 
