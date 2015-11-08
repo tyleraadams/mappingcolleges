@@ -398,7 +398,7 @@ footer {
     margin-left: 0;
   }
 
-  .about {
+  .about, .map {
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -494,7 +494,7 @@ footer {
     display: none;
   }
 
-  .about {
+  .about, .map {
     padding-left: 24px;
     padding-right: 24px;
   }
