@@ -80,10 +80,6 @@ $(function(){
       $('.social-media-buttons-container').addClass('not_bottom_of_page');
       $('.social-media-buttons-container').removeClass('bottom_of_page');
     }
-
-    // if ($('.social-media-buttons-container').css('position') === 'static' && $(this).scrollTop() + $(this).height() !== getDocHeight()) {
-    //   $('.social-media-buttons-container').css('position', 'fixed');
-    // }
   }
 
   function trimFloat (number) {
@@ -173,7 +169,6 @@ $(function(){
     };
 
     window.localStorage.setItem('starred', JSON.stringify(starred));
-    console.log('startingField: ', startingField);
     var theMap = new jvm.Map({
       container: $('#world-map-gdp'),
       map: 'us_merc',
@@ -222,14 +217,11 @@ $(function(){
 
 
           $timelineContainer.find('iframe').load(function(){
-            // $(this).show();
 
             setTimeout(function () {
-              $("#loader").fadeOut("slow");;
+              $("#loader").fadeOut("slow");
               scrollTo($timelineContainer);
             }, 3500);
-
-            // console.log('load the iframe ', this.readyState)
 
           });
         }
@@ -266,7 +258,7 @@ $(function(){
 
             return field === toBeFiltered;
           });
-          console.log('IS it supposed tobe filtered: ', isItToBeFiltered);
+
           if (field === 'message') {
             labelString += '<b>'+ found[field] + '</b>';
           } else if (!isItToBeFiltered) {
@@ -295,7 +287,7 @@ $(function(){
                 "stroke-width": 0,
                 cursor: 'default'
               }
-          }
+          };
 
           return obj;
 
@@ -325,30 +317,12 @@ $(function(){
       if (e.target && e.target.value) {
         statesValues = createChoroplethData(dataArr, e.target.value);
         theMap.series.regions[0].currentDataField = e.target.value;
-        // commented out code here appears to not be doing anything, but just in case
-        // theMap.series.regions[0].reset();
+
         theMap.series.regions[0].clear();
-        // can't tell if this is actually changing the min and max values, but it was what was suggested in https://github.com/bjornd/jvectormap/issues/221
-        // theMap.series.regions[0] = {
-        //   attribute: 'fill',
-        //   scale: colorScales[e.target.value],
-        //   values: statesValues,
-        //   normalizeFunction: 'polynomial'
-        // };
-        // var newDataSeries = new
-        // theMap.params.min = jvm.min(statesValues);
-        // theMap.params.max = jvm.max(statesValues);
-        // theMap.params.legend = {'horizontal': true};
+
         theMap.series.regions[0].setValues(statesValues);
 
-
         theMap.series.regions[0].setScale(colorScales[e.target.value]);
-
-        // again, not sure if this is doing anything, but just ot be safe
-        // theMap.series.regions[0].scale.maxValue = jvm.max(statesValues);
-        // theMap.series.regions[0].scale.clearMaxValue = jvm.max(statesValues);
-        // theMap.series.regions[0].scale.minValue = jvm.min(statesValues);
-        // theMap.series.regions[0].scale.clearMinValue = jvm.min(statesValues);
 
         $('.field-desc').text($(e.target).data('desc'));
       }
