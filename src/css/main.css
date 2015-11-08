@@ -236,17 +236,6 @@ footer {
   font-family: 'Lato', sans-serif;
 }
 
-.legend {
-  /*position: absolute;*/
-  /*left: 1%;*/
-  /*bottom: 1%;*/
-  /*z-index: 2;*/
-  /*width: 33%;*/
-  /*background: #FFFFFF;*/
-  /*padding: 0.5% 0.75%;*/
-  /*border-radius: 3px;*/
-}
-
 .legend ul {
   font-size: 0.85em;
   font-family: 'Lato', sans-serif;
@@ -258,7 +247,6 @@ footer {
 
 .field-desc {
   font-size: 0.75em;
-  /*min-height: 145px;*/
 }
 
 #slider form, .map-desc {
@@ -468,7 +456,7 @@ footer {
   }
 
   .field-desc {
-    min-height: 0;
+    display: none;
   }
 
   .timeline {
@@ -564,7 +552,7 @@ footer {
   }
 
   .field-desc {
-    min-height: 0;
+    display: none;
   }
 
   .timeline {
