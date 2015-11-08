@@ -78,29 +78,33 @@
       <button class="icon-angle-double-down"> </button>
     </section>
     <section class="map">
-      <div id='world-map-gdp'></div>
+
+
+      <div id='world-map-gdp'>
+
+      </div>
+
       <div id='slider'>
         <h2>Interact with our data!</h2>
         <p class="map-desc">We have data on 1005 community colleges from across the country. See state averages and how they compare to other states by hovering. Click on a state to see the community colleges located there. Click on a yellow dot to see our in-depth coverage of that college.</p>
-
         <div class="legend">
           <h4>Legend</h4>
           <ul class="legend-labels">
             <li> <svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="#FFFF00" stroke="#505050" fill-opacity="1" stroke-width="0" stroke-opacity="1"></circle></svg> <span>A college with in-depth coverage by The Takeaway (click!)</span> </li>
             <li><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="#14a797" stroke="#505050" fill-opacity="1" stroke-width="0" stroke-opacity="1"></circle></svg>  <span>A college in the state you have selected</span></li>
             </ul>
-            </div>
+        </div>
         <form>
           <h4>Data Fields</h4>
-          <input type='radio' class="viz_radio" name='visualization' value='Percent Part-Time' id='part_time' data-desc="Percentage of students enrolled part-time in fall 2011. NCES IPEDS Enrollment Survey - File ef2011_a (Final Release)" checked>
+          <input type='radio' class="viz_radio" name='visualization' value='Percent Part-Time' id='part_time' data-desc="Percentage of students enrolled part-time in fall 2011." checked>
           <label for="part_time" class="label">Percent Part-Time</label>
-          <input type='radio' class="viz_radio" name='visualization' id='non_traditional' value='Percent Non-Traditional Age (25 and Older)' data-desc="Percentage of undergraduates enrolled in the fall of 2009 who are 25 years of age and older.  NCES IPEDS Enrollment Survey - File ef2011b (Final Release - Reporting Mandatory in Odd Years Only)">
+          <input type='radio' class="viz_radio" name='visualization' id='non_traditional' value='Percent Non-Traditional Age (25 and Older)' data-desc="Percentage of undergraduates enrolled in the fall of 2009 who are 25 years of age and older.">
           <label for="non_traditional" class="label">Percent Non-Traditional Age <small>(25 and Older)</small></label>
-          <input type='radio' class="viz_radio" name='visualization' value='Percent Minority' id="minority" data-desc="Percentage of undergraduates enrolled in AY 2011-12 who are Black, Hispanic, or Native American.  NCES IPEDS Enrollment Survey - File effy2012 (Provisional Release)">
+          <input type='radio' class="viz_radio" name='visualization' value='Percent Minority' id="minority" data-desc="Percentage of undergraduates enrolled in AY 2011-12 who are Black, Hispanic, or Native American.">
           <label for="minority" class="label">Percent Minority</label>
-          <input type='radio' class="viz_radio" name='visualization' value='First-Year Retention Rate' id="first_year" data-desc="Percent of fall first-time (full- and Part-time) students returning the following fall semester.  The measure combines the most recent three years (2009,2010,2011).  Calculation: ((Still enrolled or completed fall 2011,2010,2009) / (First-time fall 2010,2009, 2008))*100  NCES, IPEDS 2009, 2010, and 2011 Enrollment Surveys - Files ef2009d (Final Release), ef2010d (Final Release), ef2011d (Final Release)">
+          <input type='radio' class="viz_radio" name='visualization' value='First-Year Retention Rate' id="first_year" data-desc="Percent of fall first-time (full- and Part-time) students returning the following fall semester.  The measure combines the most recent three years (2009,2010,2011).">
           <label for="first_year" class="label">First-Year Retention Rate</label>
-          <input type='radio' class="viz_radio" name='visualization' value='Three-Year Graduation Rate' id="three_year" data-desc="Percent of fall first-time full-time students earning a certificate or diploma within three years or who transfer out to another institution.  The measure combines the most recent three years (2009,2010,2011).  Calculation: )(Completed or transferred by summer of 2011,2010,2009) / (First-time fall 2008,2007,2006))*100 NCES, IPEDS 2009, 2010, and 2011 Graduation Rate Surveys - Files gr2011, gr2010, gr2009 (Final Release)">
+          <input type='radio' class="viz_radio" name='visualization' value='Three-Year Graduation Rate' id="three_year" data-desc="Percent of fall first-time full-time students earning a certificate or diploma within three years or who transfer out to another institution.  The measure combines the most recent three years (2009,2010,2011).">
           <label for="three_year" class="label">Three-Year Graduation Rate</label>
           <input type='radio' class="viz_radio" name='visualization' id="pell" value='Percent of Undergrads Receiving Pell, 2011-12' data-desc="">
           <label for="pell" class="label">Percent of Undergrads Receiving Pell, <small>2011-12</small></label>
@@ -112,12 +116,16 @@
     </section>
     <footer class="footer">
       <p class="author footer_cell"><small>Built by</small> <br><a href="http://tyleraadams.com" class="credit red" target="_blank">Tyler Adams</a></p>
-      <p class="logo-container footer_cell"><a href="http://www.thetakeaway.org/series/communitycollege/" target="_blank"><img class="takeaway_logo" width="150" height="53" src="images/takeawaylogo.png" alt="The Takeaway"></a></p>
-      <div class="social-media-buttons-container footer_cell">
-        <a href="https://www.facebook.com/thetakeaway" target="_blank" class="icons">
+      <p class="logo-container footer_cell">
+        <a href="http://www.thetakeaway.org/series/communitycollege/" target="_blank">
+          <img class="takeaway_logo" width="150" height="53" src="images/takeawaylogo.png" alt="The Takeaway">
+        </a>
+      </p>
+      <div class="social-media-buttons-container not_bottom_of_page footer_cell">
+        <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.highered.org" target="_blank" class="icons">
           <div id="facebook" class="icon-facebook"></div>
         </a>
-        <a href="http://twitter.com/thetakeaway" class="icons" target="_blank">
+        <a href="http://twitter.com/share?url=%2F&amp;text=Check+out+%40thetakeaway%27s+%27Community+College+Challenge%27+http%3A%2F%2Fwww.highered.org" class="icons" target="_blank">
           <div id="twitter" class="icon-twitter"></div>
         </a>
       </div>
@@ -145,7 +153,7 @@
       <iframe id="echols" frameborder="0" height="650" src="http://cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=0ArmAJfFcZtYadE5NNUtsWk1FSkVaRVVpbmVsd3BxdlE&amp;font=Bevan-PotanoSans&amp;maptype=toner&amp;lang=en&amp;height=650" width="100%"></iframe>
       <!-- <audio autoplay id="player" src="echols.WAV"></audio> -->
     </template>
-    <script src="js/main.min.js"></script>
+    <script src="js/main.js"></script>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

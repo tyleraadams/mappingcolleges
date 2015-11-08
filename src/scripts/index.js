@@ -1,12 +1,37 @@
 $(function(){
+
+  if (!Array.prototype.find) {
+    Array.prototype.find = function(predicate) {
+      if (this === null) {
+        throw new TypeError('Array.prototype.find called on null or undefined');
+      }
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function');
+      }
+      var list = Object(this);
+      var length = list.length >>> 0;
+      var thisArg = arguments[1];
+      var value;
+
+      for (var i = 0; i < length; i++) {
+        value = list[i];
+        if (predicate.call(thisArg, value, i, list)) {
+          return value;
+        }
+      }
+      return undefined;
+    };
+  }
+
   var chropolethDataLibrary = {};
+  var starredItemHex = '#FFFF00';
   var colorScales = {
-    'Percent Part-Time': ['#fee6ce','#fdae6b','#e6550d'],
-    'Percent Non-Traditional Age (25 and Older)': ['#fee0d2','#fc9272','#de2d26'],
-    'Percent Minority': ['#e5f5e0','#a1d99b','#31a354'],
-    'First-Year Retention Rate': ['#deebf7','#9ecae1','#3182bd'],
-    'Three-Year Graduation Rate': ['#efedf5','#bcbddc','#756bb1'],
-    'Percent of Undergrads Receiving Pell, 2011-12': ['#fbf9dc', '#f5f3b7', '#eaea83']
+    'Percent Part-Time': ['#FEE6CE','#FDAE6B','#E550D'],
+    'Percent Non-Traditional Age (25 and Older)': ['#FEE0D2','#FC9272','#DE2D26'],
+    'Percent Minority': ['#E5F5E0','#A1D99B','#31A354'],
+    'First-Year Retention Rate': ['#DEEBF7','#9ECAE1','#3182BD'],
+    'Three-Year Graduation Rate': ['#EFEDF5','#BCBDDC','#756BB1'],
+    'Percent of Undergrads Receiving Pell, 2011-12': ['#FBF9DC', '#F5F3B7', '#EAEA83']
   };
 
   function parseLatLon (input) {
@@ -36,6 +61,29 @@ $(function(){
       $(this).off();
       $container.html('');
     });
+  }
+
+  function getDocHeight() {
+    var D = document;
+    return Math.max(
+        D.body.scrollHeight, D.documentElement.scrollHeight,
+        D.body.offsetHeight, D.documentElement.offsetHeight,
+        D.body.clientHeight, D.documentElement.clientHeight
+    );
+  }
+
+  function onScroll () {
+    if ($(this).scrollTop() + $(this).height() === getDocHeight()) {
+      $('.social-media-buttons-container').addClass('bottom_of_page');
+      $('.social-media-buttons-container').removeClass('not_bottom_of_page');
+    } else if ($(this).scrollTop() + $(this).height() !== getDocHeight()) {
+      $('.social-media-buttons-container').addClass('not_bottom_of_page');
+      $('.social-media-buttons-container').removeClass('bottom_of_page');
+    }
+
+    // if ($('.social-media-buttons-container').css('position') === 'static' && $(this).scrollTop() + $(this).height() !== getDocHeight()) {
+    //   $('.social-media-buttons-container').css('position', 'fixed');
+    // }
   }
 
   function trimFloat (number) {
@@ -85,7 +133,7 @@ $(function(){
   }
   // event listeners
   $('.icon-angle-double-down').click(scrollToNextSection);
-
+  $(window).scroll($.debounce(250,onScroll));
   // ajax call to get our big chunk of json data
   $.ajax( {
     url: "/data.json",
@@ -100,25 +148,29 @@ $(function(){
       return item.starred;
     }).map(function (item,index) {
       var latLng =  parseLatLon(item['latitude,longitude']);
-      var obj = {
-        latLng: latLng,
-        name: item['Institution Name'],
-        'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'],
-        'First-Year Retention Rate': item['First-Year Retention Rate'],
-        'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'],
-        'Percent Minority': item['Percent Minority'],
-        'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],
-        'Percent Part-Time': item['Percent Part-Time'],
-        'Three-Year Graduation Rate': item['Three-Year Graduation Rate'],
-        starred: item.starred,
-        link: slugify(item['Institution Name']),
-        style: {
-          fill: '#FFFF00',
-          "stroke-width": 0
-        }
+      var obj = item;
+
+      obj.latLng = latLng;
+      obj.style = {
+        fill: starredItemHex,
+        'stroke-width': 0
       };
+
       return obj;
     });
+
+    starred[4] = {
+      'Institution Name': 'CUNY Guttman Community College',
+      'City': 'New York',
+      'State': 'NY',
+      'latLng': parseLatLon('40.7528906,-73.9862344'),
+      'starred': 'true',
+      'message': 'Click for more info',
+      'style': {
+        'fill': starredItemHex,
+        'stroke-width': 0
+      }
+    };
 
     window.localStorage.setItem('starred', JSON.stringify(starred));
     console.log('startingField: ', startingField);
@@ -129,11 +181,9 @@ $(function(){
       zoomOnScroll: false,
       backgroundColor: '#FFFFFF',
       markerStyle: {
-        initial: {
-        },
         hover: {
-          "stroke-width": 5,
-          "stroke": '#FFFFFF',
+          'stroke-width': 5,
+          'stroke': '#FFFFFF',
           cursor: 'default'
         }
       },
@@ -143,13 +193,6 @@ $(function(){
           scale: colorScales[startingField] ,
           values: statesValues,
           currentDataField: startingField
-          /*,
-          min: 10,
-          max: 75,
-          legend: {
-            horizontal: true
-          }
-          */
         }]
       },
 
@@ -193,40 +236,45 @@ $(function(){
       },
 
       onMarkerTipShow: function (event, label, index) {
-        var sourceArr;
-        var name;
+        var sourceArr,
+        name,
+        found;
+
+        var labelString = '',
+        fieldsToFilter = ['origIndex', 'latitude,longitude', 'style', 'latLng', 'starred'];
 
         // index is a 0 - 4 for the starred colleges, and otherwise the name of the college
         if (/\d+/.test(index)) {
           sourceArr  = JSON.parse(window.localStorage.getItem('starred'));
-          name = sourceArr[index]['name'];
+          name = sourceArr[index]['Institution Name'];
 
-          var found = sourceArr.find(function (item) {
-            // if (name === "CUNY Guttman Community College") {
-            //   item['Percent Non-Traditional Age (25 and Older)'] = "N/A";
-            //   item['First-Year Retention Rate'] = "N/A";
-            //   item['Size: Annual Unduplicated Headcount'] = "N/A";
-            //   item['Percent Minority'] = "N/A";
-            //   item['Percent of Undergrads Receiving Pell, 2011-12'] = "N/A";
-            //   item['Percent Part-Time'] = "N/A";
-            //   item['Three-Year Graduation Rate'] = "N/A";
-            // }
-
-            return item.name === name;
+          found = sourceArr.find(function (item) {
+            return item['Institution Name'] === name;
           });
         } else {
+          // --- nonstarred colleges ---
           sourceArr = JSON.parse(window.localStorage.getItem('currentStateData'));
           name = index;
-          var found = sourceArr.find(function (item) {
-            return item.name === name;
+
+          found = sourceArr.find(function (item) {
+            return item['Institution Name'] === name;
           });
         }
-        if (name === "CUNY Guttman Community College") {
-          label.html('<b class="college_name">'+ name +'</b><br><p>Click for more info</p>');
-        } else {
 
-          label.html('<b class="college_name">'+ name +'</b><br/><b> Percent Non-Traditional Age (25 and Older):</b> '+ found['Percent Non-Traditional Age (25 and Older)']+'<br/><b> First-Year Retention Rate:</b> '+ found['First-Year Retention Rate']+'<br/><b>Size: Annual Unduplicated Headcount:</b> '+ found['Size: Annual Unduplicated Headcount']+'<br/><b> Percent Minority:</b> ' + found['Percent Minority'] + '<br/> <b> Percent of Undergrads Receiving Pell, 2011-12:</b> ' + found['Percent of Undergrads Receiving Pell, 2011-12'] + '<br/><b> Percent Part-Time:</b>  ' +  found['Percent Part-Time'] + '<br/><b> Three-Year Graduation Rate: </b> ' + found['Three-Year Graduation Rate']);
-        }
+        for (var field in found) {
+          var isItToBeFiltered = fieldsToFilter.find(function (toBeFiltered) {
+
+            return field === toBeFiltered;
+          });
+          console.log('IS it supposed tobe filtered: ', isItToBeFiltered);
+          if (field === 'message') {
+            labelString += '<b>'+ found[field] + '</b>';
+          } else if (!isItToBeFiltered) {
+            labelString += '<b>' + field + ':</b> ' + found[field] + '<br>';
+          }
+        };
+
+        label.html(labelString);
       },
 
       placeCollegesOnStateMap: function (code) {
@@ -235,19 +283,22 @@ $(function(){
           // !item.starred -- don't cover up the starred item with a regular dot
           return item.State === code && !item.starred;
         }).map(function (item,index) {
+          var obj = item;
           var latLng =  parseLatLon(item['latitude,longitude']);
-          return { latLng: latLng, name: item['Institution Name'],  'Percent Non-Traditional Age (25 and Older)': item['Percent Non-Traditional Age (25 and Older)'], 'First-Year Retention Rate': item['First-Year Retention Rate'], 'Size: Annual Unduplicated Headcount': item['Size: Annual Unduplicated Headcount'], 'Percent Minority': item['Percent Minority'], 'Percent of Undergrads Receiving Pell, 2011-12': item['Percent of Undergrads Receiving Pell, 2011-12'],'Percent Part-Time': item['Percent Part-Time'], 'Three-Year Graduation Rate': item['Three-Year Graduation Rate'],
-            style: {
-              fill: '#14a797',
-              "stroke-width" : 0 ,
+
+          obj.latLng = latLng;
+          obj.style = {
+            fill: '#14a797',
+            "stroke-width" : 0,
               hover: {
                 "fill-opacity": 0.6,
                 "stroke-width": 0,
                 cursor: 'default'
-
               }
-            }
-          };
+          }
+
+          return obj;
+
         });
 
         if (theMap.markers) {
@@ -263,8 +314,7 @@ $(function(){
         window.localStorage.setItem('currentStateData', JSON.stringify(locationData));
 
         locationData.forEach(function (item) {
-          // item.style.fill = {'#14a797';
-          theMap.addMarker(item.name, item);
+          theMap.addMarker(item['Institution Name'], item);
         });
       }
     });

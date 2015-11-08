@@ -34,7 +34,10 @@ svg {
     border-bottom: 1px solid #000000;
     margin-bottom: 3.25px;
 }
-.jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {
+
+.jvectormap-zoomin,
+.jvectormap-zoomout,
+.jvectormap-goback {
     position: absolute;
     left: 10px;
     border-radius: 3px;
@@ -47,7 +50,8 @@ svg {
     box-sizing: content-box;
 }
 
-.jvectormap-zoomin, .jvectormap-zoomout {
+.jvectormap-zoomin,
+.jvectormap-zoomout {
     width: 10px;
     height: 10px;
 }
@@ -77,7 +81,7 @@ svg {
 
 .jvectormap-legend-title {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -144,4 +148,16 @@ svg {
     vertical-align: middle;
     line-height: 20px;
     padding-left: 3px;
+}
+
+@media screen and (max-width: 720px) {
+    .jvectormap-legend-cnt {
+        display: none;
+    }
+}
+
+@media screen and (max-device-width: 568px) {
+    .jvectormap-legend-cnt {
+        display: none;
+    }
 }

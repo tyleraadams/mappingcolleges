@@ -169,7 +169,8 @@ footer {
   font-size: 2.25em;
   text-align: center;
   width: 90%;
-  margin: 0 auto 24px;
+  margin: 0 auto;
+
 }
 
 .about p {
@@ -201,8 +202,14 @@ footer {
 /* ====> MAP */
 
 .map {
-  padding: 24px;
+  padding: 24px 5% 0;
   background: #FFFFFF;
+  overflow: auto;
+}
+
+.map h2 {
+  line-height: 1.2;
+  margin-top: -4px;
 }
 
 .map h3 {
@@ -210,13 +217,14 @@ footer {
 }
 
 #world-map-gdp {
-  width: 66%;
-  height: 556px;
+  width: 60%;
+  height: 500px;
   float:left;
+  position: relative;
 }
 
 #slider  {
-  width: 31%;
+  width: 38%;
   display:inline;
   float:left;
   padding: 0 1%;
@@ -228,20 +236,33 @@ footer {
   font-family: 'Lato', sans-serif;
 }
 
+.legend {
+  /*position: absolute;*/
+  /*left: 1%;*/
+  /*bottom: 1%;*/
+  /*z-index: 2;*/
+  /*width: 33%;*/
+  /*background: #FFFFFF;*/
+  /*padding: 0.5% 0.75%;*/
+  /*border-radius: 3px;*/
+}
+
 .legend ul {
   font-size: 0.85em;
   font-family: 'Lato', sans-serif;
 }
+
 .legend ul span {
   padding-left: 0.5em;
 }
+
 .field-desc {
   font-size: 0.75em;
-  min-height: 145px;
+  /*min-height: 145px;*/
 }
 
 #slider form, .map-desc {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .label {
@@ -291,6 +312,7 @@ footer {
 .timeline {
   padding: 24px;
   clear: both;
+  padding: 0;
 }
 
 .timeline button {
@@ -308,7 +330,7 @@ footer {
 .footer {
   display: table !important;
   width: 100%;
-  border-top: 1px solid #CCCCCC;
+  border-top: 1px solid #DEDEDE;
   padding-top: 12px;
 }
 
@@ -322,6 +344,10 @@ footer {
 .author {
   text-align: left;
   padding-left: 24px;
+}
+
+.footer small {
+  padding-left: 3px;
 }
 
 .takeaway_logo {
@@ -348,7 +374,10 @@ footer {
 
 .social-media-buttons-container {
   text-align: right;
+  transition: position 200ms ;
 }
+
+
 
 @media screen and (max-width: 720px) {
 
@@ -359,15 +388,38 @@ footer {
     display:block;
   }
 
+  .legend {
+    display: none;
+  }
+
   #slider  {
     width: 100%;
     display:block;
     float: none;
   }
 
+  .map h2 {
+    margin-top: 12px;
+  }
+
+  #slider {
+    padding:0;
+  }
+
+  .map-desc, .field-desc {
+    margin-left: 0;
+  }
+
+  .about {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .about h2 {
+    text-align: left;
     font-size: 1.5em;
     width: 100%;
+    margin: 0 auto;
   }
 
   .about p:first-of-type {
@@ -383,28 +435,56 @@ footer {
 
   .about p {
     font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 12px;
   }
 
   .about .icon-angle-double-down {
     bottom: 0;
   }
 
-  .jumbotron .icon-angle-double-down {
-    display:none;
-  }
-
   .footer {
     display: block !important;
+    padding-top: 0;
   }
 
   .footer_cell {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 24px;
+    display:block;
+    padding: 0;
+    padding-top: 10px;
+  }
+
+  .author {
+    display:none;
+  }
+
+  .icon-twitter,
+  .icon-facebook {
+    font-size: 1.6em;
+  }
+
+  .bottom_of_page {
+    display: none;
+  }
+
+  .field-desc {
+    min-height: 0;
+  }
+
+  .timeline {
     padding: 0;
   }
 
+  .not_bottom_of_page {
+    position: fixed;
+    border-top: 1px solid #DEDEDE;
+    bottom: 0;
+    z-index: 2;
+    background: #FFFFFF;
+    width: 100%;
+    text-align: center;
+    padding-top: 0;
+  }
 }
 
 @media screen and (max-device-width: 568px) {
@@ -422,9 +502,20 @@ footer {
     float: none;
   }
 
+  .legend {
+    display: none;
+  }
+
+  .about {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .about h2 {
     font-size: 1.5em;
     width: 100%;
+    text-align: left;
+    margin-bottom: 0;
   }
 
   .about p:first-of-type {
@@ -440,27 +531,55 @@ footer {
 
   .about p {
     font-size: 1em;
+    margin-bottom: 12px;
+    margin-top: 0;
   }
 
   .about .icon-angle-double-down {
     bottom: 0;
   }
 
-  .jumbotron .icon-angle-double-down {
-    display:none;
-  }
-
   .footer {
     display: block !important;
+    padding-top: 0;
   }
 
   .footer_cell {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 24px;
+    display:block;
+    padding: 0;
+    padding-top: 10px;
+  }
+
+  .author {
+    display:none;
+  }
+
+  .icon-twitter,
+  .icon-facebook {
+    font-size: 1.6em;
+  }
+
+  .bottom_of_page {
+    display: none;
+  }
+
+  .field-desc {
+    min-height: 0;
+  }
+
+  .timeline {
     padding: 0;
   }
 
+  .not_bottom_of_page {
+    position: fixed;
+    border-top: 1px solid #DEDEDE;
+    bottom: 0;
+    z-index: 2;
+    background: #FFFFFF;
+    width: 100%;
+    text-align: center;
+    padding-top: 0;
+  }
 }
 
