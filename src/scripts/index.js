@@ -155,18 +155,19 @@ $(function(){
       return obj;
     });
 
-    starred[4] = {
-      'Institution Name': 'CUNY Guttman Community College',
-      'City': 'New York',
-      'State': 'NY',
-      'latLng': parseLatLon('40.7528906,-73.9862344'),
-      'starred': 'true',
-      'message': 'Click for more info',
-      'style': {
-        'fill': starredItemHex,
-        'stroke-width': 0
-      }
-    };
+    // uncomment when guttman timeline is ready
+    // starred[4] = {
+    //   'Institution Name': 'CUNY Guttman Community College',
+    //   'City': 'New York',
+    //   'State': 'NY',
+    //   'latLng': parseLatLon('40.7528906,-73.9862344'),
+    //   'starred': 'true',
+    //   'message': 'Click for more info',
+    //   'style': {
+    //     'fill': starredItemHex,
+    //     'stroke-width': 0
+    //   }
+    // };
 
     window.localStorage.setItem('starred', JSON.stringify(starred));
     var theMap = new jvm.Map({
