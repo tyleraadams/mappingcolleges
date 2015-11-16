@@ -34,6 +34,10 @@ $(function(){
     'Percent of Undergrads Receiving Pell, 2011-12': ['#FBF9DC', '#F5F3B7', '#EAEA83']
   };
 
+  var iframeSrcCodes = {
+    'Lake Area Technical Institute': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1WoEiobJiqLGZJ6fCSm7nSMVbbdCSdFZA5g_lodlBfsQ&font=Default&lang=en&initial_zoom=2&height=650'
+  };
+
   function parseLatLon (input) {
     var parts = input.split(/,/);
     var lat = parseFloat(parts[0]);
@@ -208,12 +212,15 @@ $(function(){
         if (JSON.parse(window.localStorage.getItem('starred'))[code]) {
           $("#loader").show();
 
-          var templateMarkup = $('template[name="coleman"]').html();
+          var $template = $('template[name="timeline"]');
+          var templateMarkup = $template.html();
           var $timelineContainer = $('section.timeline');
-          $timelineContainer.html('<h2>Timeline</h2> <h3>'+ JSON.parse(window.localStorage.getItem('starred'))[code]['name']+'</h3>');
+
 
           $timelineContainer.append(templateMarkup);
+          var $iframe =  $timelineContainer.find('iframe');
 
+          $iframe.attr('src', iframeSrcCodes[JSON.parse(window.localStorage.getItem('starred'))[code]['Institution Name']]);
           addButtonListeners($timelineContainer);
 
 
