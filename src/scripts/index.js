@@ -241,7 +241,7 @@ $(function(){
         found;
 
         var labelString = '',
-        fieldsToFilter = ['origIndex', 'latitude,longitude', 'style', 'latLng', 'starred'];
+        fieldsToFilter = ['origIndex', 'latitude,longitude', 'style', 'latLng', 'starred', 'State'];
 
         // index is a 0 - 4 for the starred colleges, and otherwise the name of the college
         if (/\d+/.test(index)) {
@@ -269,6 +269,10 @@ $(function(){
 
           if (field === 'message') {
             labelString += '<b>'+ found[field] + '</b>';
+          } else if (field === 'City' ) {
+            labelString += found[field] + ', ' + found['State'] + '</b><br>'
+          } else if (field === 'Institution Name') {
+            labelString += '<b>' + found[field] + ', '
           } else if (!isItToBeFiltered) {
             labelString += '<b>' + field + ':</b> ' + found[field] + '<br>';
           }
