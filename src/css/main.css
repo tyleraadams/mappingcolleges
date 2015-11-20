@@ -587,6 +587,10 @@ footer {
     padding-top: 0;
   }
 
+  .about {
+    display: none !important;
+  }
+
   .animated {
     /*CSS transitions*/
     -o-transition-property: none !important;
