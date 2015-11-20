@@ -205,6 +205,7 @@ footer {
   padding: 24px 5% 0;
   background: #FFFFFF;
   overflow: auto;
+  margin-bottom: 20px;
 }
 
 .map h2 {
@@ -440,6 +441,9 @@ footer {
     margin-bottom: 12px;
   }
 
+  .icon-angle-double-down {
+    padding: 0;
+  }
   .about .icon-angle-double-down {
     bottom: 0;
   }
@@ -582,5 +586,27 @@ footer {
     text-align: center;
     padding-top: 0;
   }
+
+  .animated {
+    /*CSS transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+  }
+
 }
 
