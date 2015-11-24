@@ -35,7 +35,8 @@ $(function(){
   };
 
   var iframeSrcCodes = {
-    'Lake Area Technical Institute': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1WoEiobJiqLGZJ6fCSm7nSMVbbdCSdFZA5g_lodlBfsQ&font=Default&lang=en&initial_zoom=2&height=650'
+    'Lake Area Technical Institute': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1WoEiobJiqLGZJ6fCSm7nSMVbbdCSdFZA5g_lodlBfsQ&font=Default&lang=en&initial_zoom=2&height=650',
+    'El Paso Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1-yAWlIsdbMAgx0MZm82-83h5Vyi61ZUyfs5o3rtXzVw&font=Default&lang=en&initial_zoom=2&height=650'
   };
 
   function parseLatLon (input) {
