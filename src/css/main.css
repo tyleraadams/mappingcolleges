@@ -304,15 +304,13 @@ footer {
   padding: 0;
 }
 
-.timeline button {
-  float: right;
-  margin-right: 12px;
-  color: #FFFFFF;
-}
-
 .close {
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
+  position: absolute;
+  top: 15px;
+  right: 24px;
+  color: #FFFFFF;
 }
 /* ===> Footer */
 

@@ -11,7 +11,7 @@ var gulp = require('gulp'),
 
 gulp.task('styles', function() {
   return gulp.src('src/css/*.css')
-    .pipe(concat('main.css'))
+    .pipe(concat('main_v2.css'))
     .pipe(gulp.dest('public/css'))
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('public/css'))
@@ -27,7 +27,7 @@ gulp.task('clean', function(cb) {
 
 gulp.task('scripts', function() {
   gulp.src(['src/scripts/jquery-2.1.4.js', 'src/scripts/jquery-jvectormap-2.0.4.js', 'src/scripts/jquery-jvectormap-us-merc.js', 'src/scripts/jquery.ba-throttle-debounce.js', 'src/scripts/index.js', 'src/scripts/css3-animate-it.js'])
-  .pipe(concat('main.js'))
+  .pipe(concat('main_v2.js'))
   .pipe(gulp.dest('public/js/'))
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
