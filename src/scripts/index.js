@@ -36,7 +36,8 @@ $(function(){
 
   var iframeSrcCodes = {
     'Lake Area Technical Institute': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1WoEiobJiqLGZJ6fCSm7nSMVbbdCSdFZA5g_lodlBfsQ&font=Default&lang=en&initial_zoom=2&height=650',
-    'El Paso Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1-yAWlIsdbMAgx0MZm82-83h5Vyi61ZUyfs5o3rtXzVw&font=Default&lang=en&initial_zoom=2&height=650'
+    'El Paso Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1-yAWlIsdbMAgx0MZm82-83h5Vyi61ZUyfs5o3rtXzVw&font=Default&lang=en&initial_zoom=2&height=650',
+    'Guttman Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1XHm9R5E17jrpYm2-a7sXxGlscSpCvVcQ1A8iosxxL2A&font=Default&lang=en&initial_zoom=2&height=650'
   };
 
   function parseLatLon (input) {
@@ -160,19 +161,20 @@ $(function(){
       return obj;
     });
 
-    // uncomment when guttman timeline is ready
-    // starred[4] = {
-    //   'Institution Name': 'CUNY Guttman Community College',
-    //   'City': 'New York',
-    //   'State': 'NY',
-    //   'latLng': parseLatLon('40.7528906,-73.9862344'),
-    //   'starred': 'true',
-    //   'message': 'Click for more info',
-    //   'style': {
-    //     'fill': starredItemHex,
-    //     'stroke-width': 0
-    //   }
-    // };
+    // Guttman is not part of the original data set. As such, we are just adding the starred icon there for presentation. Still need to click it. We need to add it as the last item
+    // in starred so as to not mess up the calculations with undefined values
+    starred[starred.length] = {
+      'Institution Name': 'Guttman Community College',
+      'City': 'New York',
+      'State': 'NY',
+      'latLng': parseLatLon('40.7528906,-73.9862344'),
+      'starred': 'true',
+      'message': 'Click for more info',
+      'style': {
+        'fill': starredItemHex,
+        'stroke-width': 0
+      }
+    };
 
     window.localStorage.setItem('starred', JSON.stringify(starred));
     var theMap = new jvm.Map({
@@ -217,7 +219,7 @@ $(function(){
           var templateMarkup = $template.html();
           var $timelineContainer = $('section.timeline');
 
-
+          $timelineContainer.empty();
           $timelineContainer.append(templateMarkup);
           var $iframe =  $timelineContainer.find('iframe');
 

@@ -21,7 +21,7 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // csvStream.pipe(parser);
 
 app.get('/', function (req, res){
-  res.sendFile(path.join(__dirname+'/index.html'), { maxAge: yearInMs });
+  res.sendFile(path.join(__dirname+'/index_v2.html'));
 });
 
 app.get('/data.json', function (req, res) {
