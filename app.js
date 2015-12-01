@@ -9,7 +9,7 @@ var obj;
 var yearInMs = 31536000000;
 
 app.use(compression());
-app.use(express.static('public', { maxAge: yearInMs }));
+app.use(express.static('public'));
 app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // var csvStream = fs.createReadStream('community_college_data.csv');
 // var writeStream = fs.createWriteStream('communit_college_data.json');
@@ -21,7 +21,7 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // csvStream.pipe(parser);
 
 app.get('/', function (req, res){
-  res.sendFile(path.join(__dirname+'/index_v2.html'));
+  res.sendFile(path.join(__dirname+'/index_v2.html'), { lastModified: true});
 });
 
 app.get('/data.json', function (req, res) {
