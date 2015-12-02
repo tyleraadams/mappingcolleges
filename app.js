@@ -3,14 +3,14 @@ var app = express();
 var path = require('path');
 var compression = require('compression');
 var fs = require('fs');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 // var parse = require('csv-parse');
 var obj;
-var yearInMs = 31536000000;
+var weekInMs = 604800000;
 
 app.use(compression());
-app.use(express.static('public'));
-app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+// app.use(express.static('public'));
+// app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // var csvStream = fs.createReadStream('community_college_data.csv');
 // var writeStream = fs.createWriteStream('communit_college_data.json');
 
@@ -20,15 +20,15 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 
 // csvStream.pipe(parser);
 
-app.get('/', function (req, res){
-  res.sendFile(path.join(__dirname+'/index_v2.html'), { lastModified: true});
-});
+// app.get('/', function (req, res){
+//   res.sendFile(path.join(__dirname+'/index_v2.html'), { lastModified: true});
+// });
 
 app.get('/data.json', function (req, res) {
   fs.readFile('./public/data/community_college_data.min.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
-    res.setHeader('Cache-Control', 'public, max-age=' + yearInMs.toString());
+    res.setHeader('Cache-Control', 'public, max-age=' + weekInMs.toString());
     res.json(obj);
   });
 });
