@@ -37,7 +37,8 @@ $(function(){
   var iframeSrcCodes = {
     'Lake Area Technical Institute': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1WoEiobJiqLGZJ6fCSm7nSMVbbdCSdFZA5g_lodlBfsQ&font=Default&lang=en&initial_zoom=2&height=650',
     'El Paso Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1-yAWlIsdbMAgx0MZm82-83h5Vyi61ZUyfs5o3rtXzVw&font=Default&lang=en&initial_zoom=2&height=650',
-    'Guttman Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1XHm9R5E17jrpYm2-a7sXxGlscSpCvVcQ1A8iosxxL2A&font=Default&lang=en&initial_zoom=2&height=650'
+    'Guttman Community College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1XHm9R5E17jrpYm2-a7sXxGlscSpCvVcQ1A8iosxxL2A&font=Default&lang=en&initial_zoom=2&height=650',
+    'Valencia College': '//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1dTIk53G0WumFwDx5QpmknG31Hg8IoaxmYVAX61bMXdg&font=Default&lang=en&initial_zoom=2&height=650'
   };
 
   function parseLatLon (input) {
