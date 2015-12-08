@@ -21,7 +21,7 @@ app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
 // csvStream.pipe(parser);
 
 app.get('/', function (req, res){
-  res.sendFile(path.join(__dirname+'/public/index.html'), { lastModified: true});
+  res.sendFile(path.join(__dirname+'/public/index.html'), { lastModified: true });
 });
 
 app.get('/data.json', function (req, res) {
