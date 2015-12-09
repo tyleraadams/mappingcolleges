@@ -6,7 +6,7 @@ var fs = require('fs');
 var favicon = require('serve-favicon');
 // var parse = require('csv-parse');
 var obj;
-var weekInMs = 604800000;
+var halfWeekInMs = 304800000;
 
 app.use(compression());
 app.use(express.static('public'));
@@ -28,7 +28,7 @@ app.get('/data.json', function (req, res) {
   fs.readFile('./public/data/community_college_data.min.json', 'utf8', function (err, data) {
     if (err) throw err;
     obj = JSON.parse(data);
-    res.setHeader('Cache-Control', 'public, max-age=' + weekInMs.toString());
+    res.setHeader('Cache-Control', 'public, max-age=' + halfWeekInMs.toString());
     res.json(obj);
   });
 });
