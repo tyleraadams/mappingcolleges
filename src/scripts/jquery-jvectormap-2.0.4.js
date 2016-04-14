@@ -3391,3 +3391,5 @@ jvm.MultiMap.defaultParams = {
     return 'jquery-jvectormap-data-'+code.toLowerCase()+'-'+multiMap.defaultProjection+'-en.js';
   }
 }
+
+// module.exports = jvm;

@@ -7,7 +7,12 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   notify = require('gulp-notify'),
   del = require('del'),
-  jsonminify = require('gulp-jsonminify');
+  source = require('vinyl-source-stream'),
+  buffer =  require('vinyl-buffer'),
+  jsonminify = require('gulp-jsonminify'),
+  browserSync = require('browser-sync'),
+  browserify = require('browserify'),
+  babelify = require('babelify');
 
 gulp.task('styles', function() {
   return gulp.src('src/css/*.css')
@@ -25,16 +30,31 @@ gulp.task('clean', function(cb) {
     del(['dist'], cb);
 });
 
-gulp.task('scripts', function() {
-  gulp.src(['src/scripts/jquery-2.1.4.js', 'src/scripts/jquery-jvectormap-2.0.4.js', 'src/scripts/jquery-jvectormap-us-merc.js', 'src/scripts/jquery.ba-throttle-debounce.js', 'src/scripts/index.js', 'src/scripts/css3-animate-it.js'])
-  .pipe(concat('main_v3.js'))
-  .pipe(gulp.dest('public/js/'))
-  .pipe(rename({suffix: '.min'}))
-  .pipe(uglify())
-  .pipe(gulp.dest('public/js/'))
-  .pipe(notify({ message: 'Scripts task complete' }))
-});
+// gulp.task('scripts', function() {
+//   gulp.src(['src/scripts/jquery-2.1.4.js', 'src/scripts/jquery-jvectormap-2.0.4.js', 'src/scripts/jquery-jvectormap-us-merc.js', 'src/scripts/jquery.ba-throttle-debounce.js', 'src/scripts/index.js', 'src/scripts/css3-animate-it.js'])
+//   .pipe(concat('main_v3.js'))
+//   .pipe(gulp.dest('public/js/'))
+//   .pipe(rename({suffix: '.min'}))
+//   .pipe(uglify())
+//   .pipe(gulp.dest('public/js/'))
+//   .pipe(notify({ message: 'Scripts task complete' }))
+// });
 
+gulp.task('scripts', function(){
+  return browserify('./src/scripts/index.js', {
+    debug: true,
+    extensions: ['.js', '.json', '.es6'],
+    transform: [babelify]
+    })
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest('public/js/'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/js/'))
+    .pipe(browserSync.reload({stream:true}))
+});
 gulp.task('minify', function () {
   return gulp.src(['public/data/community_college_data.json'])
       .pipe(jsonminify())

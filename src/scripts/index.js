@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import debounce from 'debounce';
+const  jvm = require('./jquery-vectormap-2.0.4.js');
 $(function(){
 
   if (!Array.prototype.find) {
@@ -137,7 +140,7 @@ $(function(){
   }
   // event listeners
   $('.icon-angle-double-down').click(scrollToNextSection);
-  $(window).scroll($.debounce(250,onScroll));
+  $(window).scroll(debounce(onScroll, 250));
   // ajax call to get our big chunk of json data
   $.ajax( {
     url: "/data.json",
